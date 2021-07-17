@@ -5,6 +5,10 @@
     ```
     $ pip install -r requirements.txt
     ```
+    * 安裝 mongodb 環境
+    ```
+    $ docker run -p 127.0.0.1:27017:27017 --name some-mongo -d mongo
+    ```
 3. 爬蟲程式：
     * `taipei_crawler_591.py` &#8594; 爬取臺北市所有出租物件
         ```
