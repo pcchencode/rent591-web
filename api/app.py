@@ -1,13 +1,28 @@
 from flask import Flask
-from flask_pymongo import PyMongo # pip install flask_pymongo
+# from flask_pymongo import PyMongo # pip install flask_pymongo
+import pymysql as db# pip install pymysql
 from flask import request
 from flask import jsonify
+from flask import render_template
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/rent_591"
-app.config['JSON_AS_ASCII'] = False
-app.config['JSONIFY_MIMETYPE'] ="application/json;charset=utf-8" #解決中文亂碼
-mongo = PyMongo(app)
+# app.config["MONGO_URI"] = "mongodb://localhost:27017/rent_591"
+# app.config['JSON_AS_ASCII'] = False
+# app.config['JSONIFY_MIMETYPE'] ="application/json;charset=utf-8" #解決中文亂碼
+# mongo = PyMongo(app)
+
+# lhc = db.connect(host='127.0.0.1', user='root', password='')
+
+@app.route('/test1')
+def index():
+    conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
+    cur = conn.cursor()
+    sql = "SELECT `id`, `name` FROM `reply` WHERE 1"
+    cur.execute(sql)
+    u = cur.fetchall()
+    conn.close()
+    return render_template('index.html', u=u)
+
 
 @app.route('/all', methods=['GET'])
 def home_page():
