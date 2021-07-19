@@ -1,6 +1,7 @@
 from flask import Flask
 # from flask_pymongo import PyMongo # pip install flask_pymongo
 import pymysql as db# pip install pymysql
+# from flask_sqlalchemy import SQLAlchemy
 from flask import request
 from flask import jsonify
 from flask import render_template
@@ -10,6 +11,7 @@ app = Flask(__name__)
 # app.config['JSON_AS_ASCII'] = False
 # app.config['JSONIFY_MIMETYPE'] ="application/json;charset=utf-8" #解決中文亂碼
 # mongo = PyMongo(app)
+
 
 # lhc = db.connect(host='127.0.0.1', user='root', password='')
 
@@ -39,6 +41,38 @@ def index():
     u = cur.fetchall()
     conn.close()
     return render_template('index.html', u=u)
+
+@app.route('/test2')
+def index2():
+    conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
+    cur = conn.cursor()
+    sql = "SELECT `id`, `name` FROM `reply` WHERE 1"
+    cur.execute(sql)
+    u = cur.fetchall() # 返回 tuple 
+    conn.close()
+    return f"hello {u}"
+
+@app.route('/submit', methods=['GET', 'POST'])
+def submit_page():
+    conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
+    cur = conn.cursor()
+    if request.method == 'POST':
+        u_name = request.values.get('username')
+        sql = f"""
+        INSERT INTO reply(name) VALUES ('{u_name}')
+        """
+        print(sql)
+        try:
+            cur.execute(sql)
+            conn.commit()
+            return 'Your value「 ' + request.values.get('username') + '」 is saved!'
+        except Exception as e:
+            conn.rollback()
+            print(e)
+            return 'Not Saved!'
+    return render_template('submit.html')
+
+
 
 
 # @app.route('/all', methods=['GET'])
