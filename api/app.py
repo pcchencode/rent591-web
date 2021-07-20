@@ -5,6 +5,7 @@ import pymysql as db# pip install pymysql
 from flask import request
 from flask import jsonify
 from flask import render_template
+from view_form import UserForm
 
 app = Flask(__name__)
 # app.config["MONGO_URI"] = "mongodb://localhost:27017/rent_591"
@@ -65,14 +66,39 @@ def submit_page():
         try:
             cur.execute(sql)
             conn.commit()
-            return 'Your value「 ' + request.values.get('username') + '」 is saved!'
+            return render_template('submit_success.html', u_name=u_name)
         except Exception as e:
             conn.rollback()
             print(e)
-            return 'Not Saved!'
+            return render_template('submit_failed.html', err=e)
     return render_template('submit.html')
 
 
+@app.route('/user', methods=['GET', 'POST'])
+def user():
+    conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
+    cur = conn.cursor()
+    form = UserForm()
+    #  flask_wtf類中提供判斷是否表單提交過來的method，不需要自行利用request.method來做判斷
+    if form.validate_on_submit():
+        s_name = request.values.get('song_name')
+        desc = request.values.get('desc')
+        url = request.values.get('url')
+        sql = f"""
+        INSERT INTO guitar_song(`name`, `desc`, `url`) VALUES ('{s_name}', '{desc}', '{url}')
+        """
+        print(sql)
+        try:
+            cur.execute(sql)
+            conn.commit()
+            return render_template('submit_success.html', s_name=s_name)
+        except Exception as e:
+            conn.rollback()
+            print(e)
+            return render_template('submit_failed.html', err=e)
+        # return f'Success Submit {s_name} {desc} {url}'
+    #  如果不是提交過來的表單，就是GET，這時候就回傳user.html網頁
+    return render_template('guitar_song.html', form=form)
 
 
 # @app.route('/all', methods=['GET'])
@@ -166,4 +192,5 @@ def submit_page():
 #   return jsonify({'result' : output})
 
 if __name__ == '__main__':
+    app.config['SECRET_KEY']='your key' #這是因為flask_wtf預設需要設置密碼，也是為了避免一開始所說的CSRF攻擊。
     app.run(debug=True)
