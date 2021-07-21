@@ -117,9 +117,10 @@ def query_song():
         res = cur.fetchall() # 返回 tuple
         conn.close()
         if len(res)>0:
-            return f"your query result {res}"
+            # return f"your query result {res}"
+            return render_template('query_result.html', result=res)
         else:
-            return f"Song Not Found"
+            return render_template('query_failed.html')
     else:
         return render_template('query_song.html', form=form)
 
