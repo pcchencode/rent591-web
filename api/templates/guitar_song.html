@@ -4,7 +4,7 @@ Song Submit Page
 {% endblock %}
 
 {% block content %}
-  <form method="POST" action="{{ url_for('user') }}">
+  <form method="POST" action="{{ url_for('song_share') }}">
     {{ form.hidden_tag() }}
     <p>{{ form.song_name.label }} {{ form.song_name }}</p>
     <p>{{ form.desc.label }} {{ form.desc }}</p>

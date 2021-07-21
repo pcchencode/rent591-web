@@ -74,8 +74,8 @@ def submit_page():
     return render_template('submit.html')
 
 
-@app.route('/user', methods=['GET', 'POST'])
-def user():
+@app.route('/song-share', methods=['GET', 'POST'])
+def song_share():
     conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
     cur = conn.cursor()
     form = UserForm()
@@ -87,7 +87,7 @@ def user():
         sql = f"""
         INSERT INTO guitar_song(`name`, `desc`, `url`) VALUES ('{s_name}', '{desc}', '{url}')
         """
-        print(sql)
+        # print(sql)
         try:
             cur.execute(sql)
             conn.commit()
