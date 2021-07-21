@@ -16,12 +16,12 @@ app = Flask(__name__)
 
 # lhc = db.connect(host='127.0.0.1', user='root', password='')
 
-@app.route('/')
-def home_page():
-    return render_template('home.html')
+# @app.route('/home')
+# def home_page():
+#     return render_template('home.html')
 
-@app.route('/home2')
-def home_page2():
+@app.route('/home-page')
+def home_page():
     return render_template('home2.html', item_name='Phone_test')
 
 @app.route('/market')
@@ -33,25 +33,25 @@ def market_page():
     ]
     return render_template('market.html', item_name='Phone', items=items)
 
-@app.route('/test1')
-def index():
-    conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
-    cur = conn.cursor()
-    sql = "SELECT `id`, `name` FROM `reply` WHERE 1"
-    cur.execute(sql)
-    u = cur.fetchall()
-    conn.close()
-    return render_template('index.html', u=u)
+# @app.route('/test1')
+# def index():
+#     conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
+#     cur = conn.cursor()
+#     sql = "SELECT `id`, `name` FROM `reply` WHERE 1"
+#     cur.execute(sql)
+#     u = cur.fetchall()
+#     conn.close()
+#     return render_template('index.html', u=u)
 
-@app.route('/test2')
-def index2():
-    conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
-    cur = conn.cursor()
-    sql = "SELECT `id`, `name` FROM `reply` WHERE 1"
-    cur.execute(sql)
-    u = cur.fetchall() # 返回 tuple 
-    conn.close()
-    return f"hello {u}"
+# @app.route('/test2')
+# def index2():
+#     conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
+#     cur = conn.cursor()
+#     sql = "SELECT `id`, `name` FROM `reply` WHERE 1"
+#     cur.execute(sql)
+#     u = cur.fetchall() # 返回 tuple 
+#     conn.close()
+#     return f"hello {u}"
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit_page():
