@@ -108,12 +108,18 @@ def query_song():
     form = SearchForm()
     if form.validate_on_submit():
         q_name = request.values.get('query_name')
-        return f'your query song is {q_name}'
-        sql = "SELECT `id`, `name`, `desc` FROM `guitar_song`"
+        sql = f"""
+        SELECT `id`, `name`, `desc`, `url` FROM `guitar_song`
+        WHERE `name`= '{q_name}'
+        """
+        print(sql)
         cur.execute(sql)
-        u = cur.fetchall() # 返回 tuple
+        res = cur.fetchall() # 返回 tuple
         conn.close()
-        return f"hello {u}"
+        if len(res)>0:
+            return f"your query result {res}"
+        else:
+            return f"Song Not Found"
     else:
         return render_template('query_song.html', form=form)
 
