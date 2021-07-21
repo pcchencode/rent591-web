@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+Song Submit Page
+{% endblock %}
+
+{% block content %}
+  <form method="POST" action="{{ url_for('query_song') }}">
+    {{ form.hidden_tag() }}
+    <p>{{ form.query_name.label }} {{ form.query_name }}</p>
+    <p>{{ form.search.label }} {{ form.search }}</p>
+  </form>
+{% endblock %}
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <form method="POST" action="{{ url_for('user') }}">
+    {{ form.hidden_tag() }}
+    <p>{{ form.song_name.label }} {{ form.song_name }}</p>
+    <p>{{ form.desc.label }} {{ form.desc }}</p>
+    <p>{{ form.url.label }} {{ form.url }}</p>
+    <p>{{ form.submit.label }} {{ form.submit }}</p>
+  </form>
+</body>
+
+</html> -->

@@ -5,7 +5,7 @@ import pymysql as db# pip install pymysql
 from flask import request
 from flask import jsonify
 from flask import render_template
-from view_form import UserForm
+from view_form import SongForm, SearchForm
 
 app = Flask(__name__)
 # app.config["MONGO_URI"] = "mongodb://localhost:27017/rent_591"
@@ -78,7 +78,7 @@ def submit_page():
 def song_share():
     conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
     cur = conn.cursor()
-    form = UserForm()
+    form = SongForm()
     #  flask_wtf類中提供判斷是否表單提交過來的method，不需要自行利用request.method來做判斷
     if form.validate_on_submit():
         s_name = request.values.get('song_name')
@@ -99,6 +99,23 @@ def song_share():
         # return f'Success Submit {s_name} {desc} {url}'
     #  如果不是提交過來的表單，就是GET，這時候就回傳user.html網頁
     return render_template('guitar_song.html', form=form)
+
+
+@app.route('/query-song', methods=['GET', 'POST'])
+def query_song():
+    conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
+    cur = conn.cursor()
+    form = SearchForm()
+    if form.validate_on_submit():
+        q_name = request.values.get('query_name')
+        return f'your query song is {q_name}'
+        sql = "SELECT `id`, `name`, `desc` FROM `guitar_song`"
+        cur.execute(sql)
+        u = cur.fetchall() # 返回 tuple
+        conn.close()
+        return f"hello {u}"
+    else:
+        return render_template('query_song.html', form=form)
 
 
 # @app.route('/all', methods=['GET'])
