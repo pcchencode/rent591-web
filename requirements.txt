@@ -1,4 +1,0 @@
-pandas
-selenium
-pymongo
-bs4

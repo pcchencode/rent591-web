@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}
-Song Submit Page
+  Search a Song
 {% endblock %}
 
 {% block content %}
-  <form method="POST" action="{{ url_for('user') }}">
+  <form method="POST" action="{{ url_for('query_song') }}">
     {{ form.hidden_tag() }}
-    <p>{{ form.song_name.label }} {{ form.song_name }}</p>
-    <p>{{ form.desc.label }} {{ form.desc }}</p>
-    <p>{{ form.url.label }} {{ form.url }}</p>
-    <p>{{ form.submit.label }} {{ form.submit }}</p>
+    <p>{{ form.query_name.label }} {{ form.query_name }}</p>
+    <p>{{ form.search.label }} {{ form.search }}</p>
   </form>
 {% endblock %}
 

@@ -5,7 +5,7 @@ import pymysql as db# pip install pymysql
 from flask import request
 from flask import jsonify
 from flask import render_template
-from view_form import UserForm
+from view_form import SongForm, SearchForm
 
 app = Flask(__name__)
 # app.config["MONGO_URI"] = "mongodb://localhost:27017/rent_591"
@@ -16,12 +16,12 @@ app = Flask(__name__)
 
 # lhc = db.connect(host='127.0.0.1', user='root', password='')
 
-@app.route('/')
-def home_page():
-    return render_template('home.html')
+# @app.route('/home')
+# def home_page():
+#     return render_template('home.html')
 
-@app.route('/home2')
-def home_page2():
+@app.route('/home-page')
+def home_page():
     return render_template('home2.html', item_name='Phone_test')
 
 @app.route('/market')
@@ -33,25 +33,25 @@ def market_page():
     ]
     return render_template('market.html', item_name='Phone', items=items)
 
-@app.route('/test1')
-def index():
-    conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
-    cur = conn.cursor()
-    sql = "SELECT `id`, `name` FROM `reply` WHERE 1"
-    cur.execute(sql)
-    u = cur.fetchall()
-    conn.close()
-    return render_template('index.html', u=u)
+# @app.route('/test1')
+# def index():
+#     conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
+#     cur = conn.cursor()
+#     sql = "SELECT `id`, `name` FROM `reply` WHERE 1"
+#     cur.execute(sql)
+#     u = cur.fetchall()
+#     conn.close()
+#     return render_template('index.html', u=u)
 
-@app.route('/test2')
-def index2():
-    conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
-    cur = conn.cursor()
-    sql = "SELECT `id`, `name` FROM `reply` WHERE 1"
-    cur.execute(sql)
-    u = cur.fetchall() # 返回 tuple 
-    conn.close()
-    return f"hello {u}"
+# @app.route('/test2')
+# def index2():
+#     conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
+#     cur = conn.cursor()
+#     sql = "SELECT `id`, `name` FROM `reply` WHERE 1"
+#     cur.execute(sql)
+#     u = cur.fetchall() # 返回 tuple 
+#     conn.close()
+#     return f"hello {u}"
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit_page():
@@ -74,11 +74,11 @@ def submit_page():
     return render_template('submit.html')
 
 
-@app.route('/user', methods=['GET', 'POST'])
-def user():
+@app.route('/song-share', methods=['GET', 'POST'])
+def song_share():
     conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
     cur = conn.cursor()
-    form = UserForm()
+    form = SongForm()
     #  flask_wtf類中提供判斷是否表單提交過來的method，不需要自行利用request.method來做判斷
     if form.validate_on_submit():
         s_name = request.values.get('song_name')
@@ -87,7 +87,7 @@ def user():
         sql = f"""
         INSERT INTO guitar_song(`name`, `desc`, `url`) VALUES ('{s_name}', '{desc}', '{url}')
         """
-        print(sql)
+        # print(sql)
         try:
             cur.execute(sql)
             conn.commit()
@@ -99,6 +99,30 @@ def user():
         # return f'Success Submit {s_name} {desc} {url}'
     #  如果不是提交過來的表單，就是GET，這時候就回傳user.html網頁
     return render_template('guitar_song.html', form=form)
+
+
+@app.route('/query-song', methods=['GET', 'POST'])
+def query_song():
+    conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
+    cur = conn.cursor()
+    form = SearchForm()
+    if form.validate_on_submit():
+        q_name = request.values.get('query_name')
+        sql = f"""
+        SELECT `id`, `name`, `desc`, `url` FROM `guitar_song`
+        WHERE `name`= '{q_name}'
+        """
+        print(sql)
+        cur.execute(sql)
+        res = cur.fetchall() # 返回 tuple
+        conn.close()
+        if len(res)>0:
+            # return f"your query result {res}"
+            return render_template('query_result.html', result=res)
+        else:
+            return render_template('query_failed.html')
+    else:
+        return render_template('query_song.html', form=form)
 
 
 # @app.route('/all', methods=['GET'])
