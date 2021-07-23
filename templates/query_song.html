@@ -38,7 +38,7 @@
   <form method="POST" action="{{ url_for('query_song') }}">
     {{ form.hidden_tag() }}
     <p>{{ form.query_name.label }} {{ form.query_name }}</p>
-    <p>{{ form.search.label }} {{ form.search }}</p>
+    <p>{{ form.search }}</p>
   </form>
 {% endblock %}
 

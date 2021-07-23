@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <!-- <p>Clicking here will make me dissapear</p> -->
+    <input type="button" value="點我會消失喔！"/>
+
+    <!-- https://developers.google.com/speed/libraries google jquery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+    <!-- <script>
+        $(document).ready(function () {
+            $("input").click(function (event) {
+                $(this).hide();
+            });
+        });
+    </script> -->
+    <script type=text/javascript src="{{url_for('static', filename='js/dissapear.js') }}"></script>
+</body>
+
+</html>
