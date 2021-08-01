@@ -6,6 +6,13 @@ from flask import request
 from flask import jsonify
 from flask import render_template
 from view_form import SongForm, SearchForm
+from v1_db_credential import AWS_db_credential # db credential...
+
+host_name = AWS_db_credential['host_name']
+user_name = AWS_db_credential['user_name']
+password = AWS_db_credential['password']
+port = AWS_db_credential['port']
+db_name = AWS_db_credential['db_name']
 
 app = Flask(__name__)
 # lhc = db.connect(host='127.0.0.1', user='root', password='')
@@ -37,15 +44,15 @@ def market_page():
 #     conn.close()
 #     return render_template('index.html', u=u)
 
-# @app.route('/test2')
-# def index2():
-#     conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
-#     cur = conn.cursor()
-#     sql = "SELECT `id`, `name` FROM `reply` WHERE 1"
-#     cur.execute(sql)
-#     u = cur.fetchall() # 返回 tuple 
-#     conn.close()
-#     return f"hello {u}"
+@app.route('/test2-aws')
+def index2():
+    conn = db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name)
+    cur = conn.cursor()
+    sql = "SELECT * FROM `mysql`.`user`"
+    cur.execute(sql)
+    u = cur.fetchall() # 返回 tuple 
+    conn.close()
+    return f"hello {u}"
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit_page():
