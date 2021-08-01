@@ -6,7 +6,7 @@ from flask import request
 from flask import jsonify
 from flask import render_template
 from view_form import SongForm, SearchForm
-from v1_db_credential import AWS_db_credential # db credential...
+from v1_db_credential import AWS_db_credential # db credential...do not upload
 
 host_name = AWS_db_credential['host_name']
 user_name = AWS_db_credential['user_name']
