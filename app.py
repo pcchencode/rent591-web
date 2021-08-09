@@ -105,7 +105,7 @@ def song_share():
 
 @app.route('/query-song', methods=['GET', 'POST'])
 def query_song():
-    conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
+    conn = db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name)
     cur = conn.cursor()
     form = SearchForm()
     if form.validate_on_submit():
