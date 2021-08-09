@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 # from flask_pymongo import PyMongo # pip install flask_pymongo
 import pymysql as db# pip install pymysql
@@ -6,14 +7,19 @@ from flask import request
 from flask import jsonify
 from flask import render_template
 from view_form import SongForm, SearchForm
-from v1_db_credential import AWS_db_credential # db credential...do not upload
+# from v1_db_credential import AWS_db_credential # db credential...do not upload
+from lib.conf import AWS_db_credential
 
-# 想一個更好的方式做credential
-host_name = AWS_db_credential['host_name']
-user_name = AWS_db_credential['user_name']
-password = AWS_db_credential['password']
-port = AWS_db_credential['port']
-db_name = AWS_db_credential['db_name']
+
+# # 想一個更好的方式做credential
+aws_db_conf = AWS_db_credential()
+host_name = aws_db_conf.host_name
+# user_name = AWS_db_credential['user_name']
+# password = AWS_db_credential['password']
+# port = AWS_db_credential['port']
+# db_name = AWS_db_credential['db_name']
+print(host_name)
+os._exit(0)
 
 app = Flask(__name__)
 # lhc = db.connect(host='127.0.0.1', user='root', password='')
@@ -106,6 +112,7 @@ def song_share():
 @app.route('/query-song', methods=['GET', 'POST'])
 def query_song():
     conn = db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name)
+    conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
     cur = conn.cursor()
     form = SearchForm()
     if form.validate_on_submit():
