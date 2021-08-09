@@ -8,6 +8,7 @@ from flask import render_template
 from view_form import SongForm, SearchForm
 from v1_db_credential import AWS_db_credential # db credential...do not upload
 
+# 想一個更好的方式做credential
 host_name = AWS_db_credential['host_name']
 user_name = AWS_db_credential['user_name']
 password = AWS_db_credential['password']
@@ -132,6 +133,7 @@ def css_test():
 
 @app.route('/js-test')
 def index():
+    # js_test.html 會因為點擊觸發 javascript, 進而改變 html
     return render_template('js_test.html')
 
 
