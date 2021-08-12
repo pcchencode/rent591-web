@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 # from flask_pymongo import PyMongo # pip install flask_pymongo
 import pymysql as db# pip install pymysql
@@ -6,14 +7,16 @@ from flask import request
 from flask import jsonify
 from flask import render_template
 from view_form import SongForm, SearchForm
-from v1_db_credential import AWS_db_credential # db credential...do not upload
+from lib.conf import AWS_db_credential
 
-# 想一個更好的方式做credential
-host_name = AWS_db_credential['host_name']
-user_name = AWS_db_credential['user_name']
-password = AWS_db_credential['password']
-port = AWS_db_credential['port']
-db_name = AWS_db_credential['db_name']
+# credential imported from db_config.cfg
+aws_db_conf = AWS_db_credential()
+host_name = aws_db_conf.host_name
+user_name = aws_db_conf.user_name
+password = aws_db_conf.password
+port = aws_db_conf.port
+db_name = aws_db_conf.db_name
+
 
 app = Flask(__name__)
 # lhc = db.connect(host='127.0.0.1', user='root', password='')
@@ -55,30 +58,30 @@ def index2():
     conn.close()
     return f"hello {u}"
 
-@app.route('/submit', methods=['GET', 'POST'])
-def submit_page():
-    conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
-    cur = conn.cursor()
-    if request.method == 'POST':
-        u_name = request.values.get('username')
-        sql = f"""
-        INSERT INTO reply(name) VALUES ('{u_name}')
-        """
-        print(sql)
-        try:
-            cur.execute(sql)
-            conn.commit()
-            return render_template('submit_success.html', u_name=u_name)
-        except Exception as e:
-            conn.rollback()
-            print(e)
-            return render_template('submit_failed.html', err=e)
-    return render_template('submit.html')
+# @app.route('/submit', methods=['GET', 'POST'])
+# def submit_page():
+#     conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
+#     cur = conn.cursor()
+#     if request.method == 'POST':
+#         u_name = request.values.get('username')
+#         sql = f"""
+#         INSERT INTO reply(name) VALUES ('{u_name}')
+#         """
+#         print(sql)
+#         try:
+#             cur.execute(sql)
+#             conn.commit()
+#             return render_template('submit_success.html', u_name=u_name)
+#         except Exception as e:
+#             conn.rollback()
+#             print(e)
+#             return render_template('submit_failed.html', err=e)
+#     return render_template('submit.html')
 
 
 @app.route('/song-share', methods=['GET', 'POST'])
 def song_share():
-    conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
+    conn = db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name)
     cur = conn.cursor()
     form = SongForm()
     #  flask_wtf類中提供判斷是否表單提交過來的method，不需要自行利用request.method來做判斷
@@ -106,6 +109,7 @@ def song_share():
 @app.route('/query-song', methods=['GET', 'POST'])
 def query_song():
     conn = db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name)
+    # conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
     cur = conn.cursor()
     form = SearchForm()
     if form.validate_on_submit():
