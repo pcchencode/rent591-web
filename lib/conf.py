@@ -6,7 +6,7 @@ class AWS_db_credential(object):
         try:
             self.env_path = os.environ['E_PATH']
         except:
-            self.env_path = os.getcwd()+'/db_config.cfg' # export E_PATH="/Users/GJGG/cred/db_config.cfg"
+            self.env_path = os.getcwd()+'/lib/db_config.cfg' # export E_PATH="/Users/GJGG/cred/db_config.cfg"
         print(os.getcwd())
         print(self.env_path)
         with open(self.env_path, 'r' ) as f:
