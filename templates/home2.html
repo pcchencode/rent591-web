@@ -47,4 +47,23 @@ Home
 
 {% block content %}
 Hi, welcome to this sharing website!
+
+<div id="QA">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='js/faq.js') }}">
+  </script>
+  <ul>
+    <li>Question 1</li>
+    <li>Answer 1</li>
+    <li>Question 2</li>
+    <li>Answer 2</li>
+  </ul>
+  <ul>
+    <li>Question 3</li>
+    <li>Answer 3</li>
+    <li>Question 4</li>
+    <li>Answer 4</li>
+  </ul>
+
+</div>
 {% endblock %}
