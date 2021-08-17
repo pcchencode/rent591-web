@@ -145,6 +145,11 @@ def jquery():
     # js_test.html 會因為點擊觸發 javascript, 進而改變 html
     return render_template('jqry.html')
 
+@app.route('/dropdown_navbar')
+def dd_navbar():
+    return render_template('dropdown_navbar.html')
+
+
 
 if __name__ == '__main__':
     app.config['SECRET_KEY']='your key' #這是因為flask_wtf預設需要設置密碼，也是為了避免一開始所說的CSRF攻擊。
