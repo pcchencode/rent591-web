@@ -145,9 +145,6 @@ def jquery():
     # js_test.html 會因為點擊觸發 javascript, 進而改變 html
     return render_template('jqry.html')
 
-@app.route('/dropdown_navbar')
-def dd_navbar():
-    return render_template('dropdown_navbar.html')
 
 
 
