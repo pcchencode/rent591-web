@@ -27,7 +27,7 @@ app = Flask(__name__)
 
 @app.route('/home-page')
 def home_page():
-    return render_template('home2.html', item_name='Phone_test')
+    return render_template('home2.html', test_var='123', home_active='active')
 
 @app.route('/market')
 def market_page():
