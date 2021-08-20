@@ -27,7 +27,7 @@ app = Flask(__name__)
 
 @app.route('/home-page')
 def home_page():
-    return render_template('home2.html', test_var='123', home_active='active')
+    return render_template('home2.html', home_active='active')
 
 @app.route('/market')
 def market_page():
@@ -103,7 +103,7 @@ def song_share():
             return render_template('submit_failed.html', err=e)
         # return f'Success Submit {s_name} {desc} {url}'
     #  如果不是提交過來的表單，就是GET，這時候就回傳user.html網頁
-    return render_template('guitar_song.html', form=form)
+    return render_template('guitar_song.html', form=form, share_now_active='active')
 
 
 @app.route('/query-song', methods=['GET', 'POST'])
@@ -128,7 +128,7 @@ def query_song():
         else:
             return render_template('query_failed.html')
     else:
-        return render_template('query_song.html', form=form)
+        return render_template('query_song.html', form=form, search_active='active')
 
 @app.route('/css-test')
 def css_test():
