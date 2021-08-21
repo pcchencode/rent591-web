@@ -124,9 +124,9 @@ def query_song():
         conn.close()
         if len(res)>0:
             # return f"your query result {res}"
-            return render_template('query_result.html', result=res)
+            return render_template('query_result.html', result=res, search_active='active')
         else:
-            return render_template('query_failed.html')
+            return render_template('query_failed.html', search_active='active')
     else:
         return render_template('query_song.html', form=form, search_active='active')
 
