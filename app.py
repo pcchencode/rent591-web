@@ -96,11 +96,11 @@ def song_share():
         try:
             cur.execute(sql)
             conn.commit()
-            return render_template('submit_success.html', s_name=s_name)
+            return render_template('submit_success.html', s_name=s_name, share_now_active='active')
         except Exception as e:
             conn.rollback()
             print(e)
-            return render_template('submit_failed.html', err=e)
+            return render_template('submit_failed.html', err=e, share_now_active='active')
         # return f'Success Submit {s_name} {desc} {url}'
     #  如果不是提交過來的表單，就是GET，這時候就回傳user.html網頁
     return render_template('guitar_song.html', form=form, share_now_active='active')
