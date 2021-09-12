@@ -51,6 +51,15 @@
     background: #ebebeb;
     padding: 20px;
   }
+
+  /* .desc_field {
+    height: 50px;
+  } */
+  /* .container{
+      display: flex;
+      justify-content: center; 
+      align-items: center; 
+  } */
 </style>
 
 <form action="{{ url_for('song_share') }}" , method="post">
@@ -60,11 +69,15 @@
     <div class="row align-items-center justify-content-center">
       <div class="col-md-4">
         <div class="form-group">
-          {{ form.song_name.label }}
-          {{ form.song_name(class_="form-control", placeholder="歌曲名稱") }}
+          <div style="height: 80%">
+            {{ form.song_name.label }}
+            {{ form.song_name(class_="form-control", placeholder="歌曲名稱") }}
+          </div>
           <br>
-          {{ form.desc.label }}
-          {{ form.desc(class_="form-control", placeholder="詳細描述") }}
+          <div class="desc_field">
+            {{ form.desc.label }}
+            {{ form.desc(class_="form-control", placeholder="詳細描述", rows='12') }}
+          </div>
           <br>
           {{ form.url.label}}
           {{ form.url(class_="form-control", placeholder="參考網址") }}
