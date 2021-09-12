@@ -45,33 +45,6 @@
     <p>{{ form.submit }}</p>
   </form> -->
 
-<!-- <form action="{{ url_for('song_share') }}" method="post">
-  {{ form.hidden_tag() }}
-  <div class="form-group">
-    {{ form.song_name.label }}
-    {{ form.song_name(class_="form-control", cols="35", rows="20", placeholder="Song Name?") }}
-  </div>
-  <div class="form-group">
-    {{ form.desc.label }}
-    {{ form.desc(class_="form-control", size=32) }}
-  </div>
-  <div class="form-group">
-    {{ form.url.label}}
-    {{ form.url(class_="form-control", size=32) }} 
-  </div>
-  <center>
-    <button type="submit" class="btn btn-success">Submit</button>
-  </center>
-  {{ form.submit }}
-</form> -->
-
-<!-- <style>
-  .btn btn-success{
-    margin:50 auto;
-    width: 600px;
-  }
-</style> -->
-
 <form action="{{ url_for('song_share') }}" , method="post">
   {{ form.hidden_tag() }}
   
