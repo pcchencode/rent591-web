@@ -52,6 +52,19 @@
     padding: 30px;
   }
 
+  .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+              color: red;
+              opacity: 1; /* Firefox */
+  }
+
+  .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+              color: red;
+  }
+
+  .form-control::-ms-input-placeholder { /* Microsoft Edge */
+              color: red;
+  }
+
   /* .desc_field {
     height: 50px;
   } */
@@ -71,16 +84,16 @@
         <div class="form-group">
           <div style="height: 80%">
             {{ form.song_name.label(style="font-weight: bold;") }}
-            {{ form.song_name(class_="form-control", placeholder="歌曲名稱") }}
+            {{ form.song_name(class="form-control", placeholder="歌曲名稱") }}
           </div>
           <br>
           <div class="desc_field">
             {{ form.desc.label(style="font-weight: bold;") }}
-            {{ form.desc(class_="form-control", placeholder="詳細描述", rows='7', style="background-color: #FFFFFF;") }}
+            {{ form.desc(class="form-control", placeholder="詳細描述", rows='7', style="background-color: #FFFFFF;") }}
           </div>
           <br>
           {{ form.url.label(style="font-weight: bold;") }}
-          {{ form.url(class_="form-control", placeholder="參考網址", rows='6') }}
+          {{ form.url(class="form-control", placeholder="參考網址", rows='6') }}
           <br>
         </div>
       </div>      
