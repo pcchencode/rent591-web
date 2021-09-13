@@ -48,8 +48,8 @@
 <style>
   .form-group {
     border-radius: 20px;
-    background: #ebebeb;
-    padding: 20px;
+    background: #f3efef;
+    padding: 30px;
   }
 
   /* .desc_field {
@@ -70,16 +70,16 @@
       <div class="col-md-6 col-md-offset-3">
         <div class="form-group">
           <div style="height: 80%">
-            {{ form.song_name.label }}
+            {{ form.song_name.label(style="font-weight: bold;") }}
             {{ form.song_name(class_="form-control", placeholder="歌曲名稱") }}
           </div>
           <br>
           <div class="desc_field">
-            {{ form.desc.label }}
-            {{ form.desc(class_="form-control", placeholder="詳細描述", rows='7') }}
+            {{ form.desc.label(style="font-weight: bold;") }}
+            {{ form.desc(class_="form-control", placeholder="詳細描述", rows='7', style="background-color: #FFFFFF;") }}
           </div>
           <br>
-          {{ form.url.label}}
+          {{ form.url.label(style="font-weight: bold;") }}
           {{ form.url(class_="form-control", placeholder="參考網址", rows='6') }}
           <br>
         </div>
