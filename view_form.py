@@ -10,9 +10,9 @@ from wtforms.validators import DataRequired, Email
 class SongForm(FlaskForm):
     # username = StringField('UserName', validators=[DataRequired(message='Not Null')])
     # email = EmailField('Email', validators=[DataRequired(message='Not Null')])
-    song_name = StringField('SongName', validators=[DataRequired(message='Not Null')])
-    desc = TextAreaField('Description', validators=[DataRequired(message='Not Null')])
-    url = TextAreaField('refURL', validators=[DataRequired(message='Not Null')])
+    song_name = StringField('歌曲名稱*', validators=[DataRequired(message='Not Null')])
+    desc = TextAreaField('詳細描述*', validators=[DataRequired(message='Not Null')])
+    url = TextAreaField('參考連結*', validators=[DataRequired(message='Not Null')])
     submit = SubmitField('Submit')
 
 class SearchForm(FlaskForm):

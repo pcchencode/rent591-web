@@ -84,16 +84,16 @@
         <div class="form-group">
           <div style="height: 80%">
             {{ form.song_name.label(style="font-weight: bold;") }}
-            {{ form.song_name(class="form-control", placeholder="歌曲名稱") }}
+            {{ form.song_name(class="form-control", placeholder="請輸入欲分享的歌曲名稱") }}
           </div>
           <br>
           <div class="desc_field">
             {{ form.desc.label(style="font-weight: bold;") }}
-            {{ form.desc(class="form-control", placeholder="詳細描述", rows='7', style="background-color: #FFFFFF;") }}
+            {{ form.desc(class="form-control", placeholder="具體描述如何使用這項資源", rows='7', style="background-color: #FFFFFF;") }}
           </div>
           <br>
           {{ form.url.label(style="font-weight: bold;") }}
-          {{ form.url(class="form-control", placeholder="參考網址", rows='6') }}
+          {{ form.url(class="form-control", placeholder="參考的各項資料來源網址", rows='6') }}
           <br>
         </div>
       </div>      
