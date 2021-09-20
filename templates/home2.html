@@ -57,9 +57,68 @@ Home
 {% endblock %}
 
 {% block content %}
+
+<style>
+body, html {
+  height: 100%;
+}
+
+.bg { 
+    /* The image used */
+    /* background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).jpg"); */
+    background-image: url("static/bg.jpg");
+
+    /* Full height */
+    height: 70%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+.details,
+.summary {
+  margin-left: 50px;
+  /* color: silver;
+  font-size: 110%;
+  font-family: "Times New Roman", Times, serif; */
+}
+
+.p1 {
+  margin-left: 50px;
+  /* text-align: center;
+  color: silver;
+  font-size: 100%;
+  font-family: "Times New Roman", Times, serif; */
+}
+</style>
+
+<div class="bg"></div>
+
+
 Hi, welcome to this sharing website! <p>
 
-<div id="QA">
+
+<details class="details">
+  <summary class="summary">See More</summary>
+  <p class="p1">Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions,
+    award-winning fireworks and seasonal special events.</p>
+</details>
+
+<details>
+  <summary>See More</summary>
+  <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions,
+    award-winning fireworks and seasonal special events.</p>
+</details>
+
+<details>
+  <summary>See More</summary>
+  <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions,
+    award-winning fireworks and seasonal special events.</p>
+</details>
+
+<!-- <div id="QA">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
   <script type="text/javascript" src="{{url_for('static', filename='js/faq.js') }}">
   </script>
@@ -71,13 +130,6 @@ Hi, welcome to this sharing website! <p>
     <li>Question 3</li>
     <li>Answer 3</li>
   </ul>
-  <!-- <ul>
-    <li>Question 3</li>
-    <li>Answer 3</li>
-    <li>Question 4</li>
-    <li>Answer 4</li>
-  </ul> -->
-
-</div>
+</div> -->
 
 {% endblock %}
