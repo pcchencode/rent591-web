@@ -134,6 +134,10 @@ def query_song():
 def css_test():
     return render_template('css_test.html')
 
+@app.route('/accordion')
+def test_accordion():
+    return render_template('test_accordion.html')
+
 
 @app.route('/js-test')
 def index():
