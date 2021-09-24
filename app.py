@@ -134,6 +134,10 @@ def query_song():
 def css_test():
     return render_template('css_test.html')
 
+@app.route('/accordion')
+def test_accordion():
+    return render_template('test_accordion.html')
+
 
 @app.route('/js-test')
 def index():
@@ -145,7 +149,9 @@ def jquery():
     # js_test.html 會因為點擊觸發 javascript, 進而改變 html
     return render_template('jqry.html')
 
-
+@app.route('/hover')
+def hover():
+    return render_template('hover.html')
 
 
 if __name__ == '__main__':
