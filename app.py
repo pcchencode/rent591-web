@@ -149,7 +149,9 @@ def jquery():
     # js_test.html 會因為點擊觸發 javascript, 進而改變 html
     return render_template('jqry.html')
 
-
+@app.route('/hover')
+def hover():
+    return render_template('hover.html')
 
 
 if __name__ == '__main__':
