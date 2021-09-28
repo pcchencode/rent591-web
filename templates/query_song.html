@@ -102,11 +102,12 @@ form {
   <form method="post" action="{{ url_for('query_song') }}">
     {{ form.hidden_tag() }}
     {{ form.query_name(type="text", class="textbox", placeholder="請輸入欲查詢的歌曲") }}
-    {{ form.search(type="submit", class="button", value="搜尋") }}
-
+    <!-- {{ form.search(type="submit", class="button", value="搜尋") }} -->
+    <button type=submit class="button"><i class="fas fa-sign-in-alt"></i> 搜尋</button>
     <!-- <input type="text" class="textbox" placeholder="Search">
     <input title="Search" value="&#128269;" type="submit" class="button"> -->
   </form>
+  
 </center>
 {% endblock %}
 
