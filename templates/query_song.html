@@ -44,14 +44,14 @@
 </center> -->
 
 <style>
-form {
+/* form {
   outline: 0;
   float: left;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   -webkit-border-radius: 4px;
   border-radius: 4px;
-}
+} */
 
 .textbox {
   outline: 0;
@@ -66,6 +66,21 @@ form {
   -webkit-border-radius: 4px 0 0 4px;
   border-radius: 4px 0 0 4px;
 }
+
+.form-control {
+  outline: 0;
+  height: 42px;
+  width: 244px;
+  line-height: 42px;
+  /* padding: 0.16px; */
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #212121;
+  border: 0;
+  float: left;
+  -webkit-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+}
+
 
 .textbox:focus {
   outline: 0;
@@ -96,19 +111,75 @@ form {
 .button:hover {
   background-color: rgba(0, 150, 136, 0.8);
 }
-</style>
 
-<center>
-  <form method="post" action="{{ url_for('query_song') }}">
-    {{ form.hidden_tag() }}
-    {{ form.query_name(type="text", class="textbox", placeholder="請輸入欲查詢的歌曲") }}
-    <!-- {{ form.search(type="submit", class="button", value="搜尋") }} -->
-    <button type=submit class="button"><i class="fas fa-sign-in-alt"></i> 搜尋</button>
-    <!-- <input type="text" class="textbox" placeholder="Search">
-    <input title="Search" value="&#128269;" type="submit" class="button"> -->
-  </form>
+/* .form-group {
+  border-radius: 20px;
+  width: 100%;
+  background: #f3efef;
+  padding: 30px;
+} */
+
+.container-fluid {
+  background: url('http://i.hizliresim.com/v4Qykv.png');
+}
+
+.box-info {
+color: #ffffff; 
+font-family: 'Lato', sans-serif; 
+font-size: 20px; 
+font-weight: 300; 
+line-height: 58px;
+}
+</style>
+<!-- <form method="post" action="{{ url_for('query_song') }}">
+  {{ form.hidden_tag() }}
+  {{ form.query_name(type="text", class="textbox", placeholder="請輸入欲查詢的歌曲") }}
+  <button type=submit class="button"><i class="fas fa-sign-in-alt"></i> 搜尋</button>
+</form> -->
+
+
+<form action="{{ url_for('song_share') }}" , method="post">
   
-</center>
+
+  <div class="container-fluid"><br>
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-4 col-md-offset-3">
+        <div class="form-group">
+          <div style="height: 80%">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p class="box-info">一鍵輸入你想知道的歌曲～</p>
+            {{ form.hidden_tag() }}
+            {{ form.query_name(class="form-control", placeholder="請輸入欲分享的歌曲名稱") }}
+            <button type=submit class="button"><i class="fas fa-sign-in-alt"></i> 搜尋</button>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<br>
+
+
 {% endblock %}
 
 
