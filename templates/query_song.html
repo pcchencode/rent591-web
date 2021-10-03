@@ -4,33 +4,6 @@
 {% endblock %}
 
 {% block nav %}
-  <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Flask Song</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('home_page') }}">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('song_share') }}">Share Now</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="{{ url_for('query_song') }}">Search</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Register</a>
-        </li>
-      </ul>
-    </div>
-  </nav> -->
 {% endblock %}
 
 
@@ -44,15 +17,6 @@
 </center> -->
 
 <style>
-/* form {
-  outline: 0;
-  float: left;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-} */
-
 .textbox {
   outline: 0;
   height: 42px;
@@ -112,13 +76,6 @@
   background-color: rgba(0, 150, 136, 0.8);
 }
 
-/* .form-group {
-  border-radius: 20px;
-  width: 100%;
-  background: #f3efef;
-  padding: 30px;
-} */
-
 .container-fluid {
   background: url('http://i.hizliresim.com/v4Qykv.png');
 }
@@ -137,10 +94,7 @@ line-height: 58px;
   <button type=submit class="button"><i class="fas fa-sign-in-alt"></i> 搜尋</button>
 </form> -->
 
-
 <form action="{{ url_for('query_song') }}" , method="post">
-  
-
   <div class="container-fluid"><br>
     <div class="row align-items-center justify-content-center">
       <div class="col-md-4 col-md-offset-3">
@@ -170,8 +124,6 @@ line-height: 58px;
             <br>
             <br>
           </div>
-
-
         </div>
       </div>
     </div>
@@ -181,24 +133,3 @@ line-height: 58px;
 
 
 {% endblock %}
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-
-<body>
-  <form method="POST" action="{{ url_for('user') }}">
-    {{ form.hidden_tag() }}
-    <p>{{ form.song_name.label }} {{ form.song_name }}</p>
-    <p>{{ form.desc.label }} {{ form.desc }}</p>
-    <p>{{ form.url.label }} {{ form.url }}</p>
-    <p>{{ form.submit.label }} {{ form.submit }}</p>
-  </form>
-</body>
-
-</html> -->
