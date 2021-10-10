@@ -103,7 +103,7 @@ def query_song():
         conn.close()
         if len(res)>0:
             # return f"your query result {res}"
-            return render_template('query_result.html', result=res, search_active='active')
+            return render_template('query_result.html', result=res, search_active='active', query_name=q_name)
         else:
             return render_template('query_failed.html', search_active='active')
     else:
@@ -131,6 +131,10 @@ def jquery():
 @app.route('/hover')
 def hover():
     return render_template('hover.html')
+
+@app.route('/card-accordion')
+def card():
+    return render_template('card_accordion.html')
 
 
 if __name__ == '__main__':
