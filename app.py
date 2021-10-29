@@ -58,27 +58,6 @@ def index2():
     conn.close()
     return f"hello {u}"
 
-# @app.route('/submit', methods=['GET', 'POST'])
-# def submit_page():
-#     conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
-#     cur = conn.cursor()
-#     if request.method == 'POST':
-#         u_name = request.values.get('username')
-#         sql = f"""
-#         INSERT INTO reply(name) VALUES ('{u_name}')
-#         """
-#         print(sql)
-#         try:
-#             cur.execute(sql)
-#             conn.commit()
-#             return render_template('submit_success.html', u_name=u_name)
-#         except Exception as e:
-#             conn.rollback()
-#             print(e)
-#             return render_template('submit_failed.html', err=e)
-#     return render_template('submit.html')
-
-
 @app.route('/song-share', methods=['GET', 'POST'])
 def song_share():
     conn = db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name)
@@ -124,7 +103,7 @@ def query_song():
         conn.close()
         if len(res)>0:
             # return f"your query result {res}"
-            return render_template('query_result.html', result=res, search_active='active')
+            return render_template('query_result.html', result=res, search_active='active', query_name=q_name)
         else:
             return render_template('query_failed.html', search_active='active')
     else:
@@ -152,6 +131,10 @@ def jquery():
 @app.route('/hover')
 def hover():
     return render_template('hover.html')
+
+@app.route('/card-accordion')
+def card():
+    return render_template('card_accordion.html')
 
 
 if __name__ == '__main__':
