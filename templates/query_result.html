@@ -7,10 +7,294 @@ Submit Page
 {% endblock %}
 
 {% block content %}
-  <center>
-    您所搜尋的歌曲關鍵字為：{{ query_name }} <br>
-    以下為自學資源，自學愉快：）
-  </center>
+<style>
+  .page-wrapper .default-address {
+    padding: 50px 20px;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+  }
+
+  @media (min-width: 768px) {
+    .page-wrapper .default-address {
+      padding: 50px 40px;
+    }
+  }
+
+  .page-wrapper .default-address .card {
+    width: 800px;
+    max-width: 120%;
+    margin: auto;
+    margin-bottom: 25px;
+    /* border: 1px dashed #4e5254; */
+    border: 1px #4e5254;
+    border-radius: 10px;
+    background-color: #f6f6f6;
+  }
+
+  .page-wrapper .default-address .card .card-header {
+    border: none;
+    background: none;
+  }
+
+  .page-wrapper .default-address .card .default-button {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .page-wrapper .default-address .card .default-button img {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.3s ease-in;
+    -o-transition: 0.3s ease-in;
+    transition: 0.3s ease-in;
+  }
+
+  .page-wrapper .default-address .card .default-button span {
+    font-size: 12px;
+    color: #4e5254;
+    display: block;
+    line-height: 1.5;
+  }
+
+  .page-wrapper .default-address .card .default-button .default-name {
+    font-weight: 600;
+    line-height: 2;
+  }
+
+  .page-wrapper .default-address .card .default-button:not(.collapsed) img {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+
+  .page-wrapper .default-address .card .card-body .form-group {
+    margin-bottom: 10px;
+  }
+
+  .page-wrapper .default-address .card .card-body .form-group label {
+    font-size: 12px;
+    color: #4e5254;
+  }
+
+  .page-wrapper .default-address .card .card-body .form-group .form-control {
+    background-color: #fffbfb;
+    font-size: 12px;
+    height: calc(1.5em + 0.75rem);
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+  }
+
+  .page-wrapper .default-address .card .card-foot {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .page-wrapper .default-address .card .card-foot .btn {
+    font-size: 12px;
+    width: 96px;
+    border-radius: 2px;
+    border-color: #ea8523;
+    height: 30px;
+  }
+
+  .page-wrapper .default-address .card .card-foot .btn-primary {
+    background-color: #ea8523;
+  }
+
+  .page-wrapper .default-address .card .card-foot .btn-outline-primary {
+    background-color: transparent;
+    color: #ea8523;
+    margin-right: 16px;
+  }
+</style>
+
+<!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" /> -->
+<center>
+  您所搜尋的歌曲關鍵字為：{{ query_name }} <br>
+  以下為自學資源，自學愉快：）
+</center>
+
+
+<center>
+  <div class="page-wrapper">
+    <section class="default-address">
+      <div class="accordion" id="accordionAddress">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn default-button collapsed text-left" type="button" data-toggle="collapse"
+                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <div>
+                  <span class="default-name">搜尋結果一</span>
+                  <span> {{result[0][1]}} </span>
+                  <span> 分享連結 </span>
+                </div>
+                <img class="img-fluid" src="static/chevron_down.png" />
+              </button>
+            </h2>
+          </div>
+
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+            <div>
+              <br> 資源敘述: {{result[0][2]}}
+              <br> 參考連結： "https://www.youtube.com/embed/{{result[0][3][-11:]}}"
+              <br>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/{{result[0][3][-11:]}}"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn default-button collapsed text-left" type="button" data-toggle="collapse"
+                data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <div>
+                  <span class="default-name">Raju Sharma</span>
+                  <span>64, New Ratna Bunglows, </span>
+                  <span>Mumbai, India.</span>
+                </div>
+                <img class="img-fluid" src="static/chevron_down.png" />
+              </button>
+            </h2>
+          </div>
+
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
+            <form>
+              <div class="card-body pt-0">
+                <div class="form-group">
+                  <label>NAME</label>
+                  <input type="text" class="form-control" placeholder="Default Text Input" />
+                </div>
+                <div class="form-group">
+                  <label>ADDRESS</label>
+                  <input type="text" class="form-control" placeholder="Default Text Input" />
+                </div>
+                <div class="form-group">
+                  <label>ZIP CODE</label>
+                  <input type="text" class="form-control" placeholder="Default Text Input" />
+                </div>
+                <div class="form-group">
+                  <label>CITY</label>
+                  <input type="text" class="form-control" placeholder="Default Text Input" />
+                </div>
+                <div class="form-group">
+                  <label>COUNTRY</label>
+                  <select class="form-control" placeholder="Default Text Input">
+                    <option>INDIA</option>
+                    <option>USA</option>
+                    <option>UK</option>
+                  </select>
+                </div>
+              </div>
+              <div class="card-foot">
+                <button type="submit" class="btn btn-outline-primary">
+                  CANCEL
+                </button>
+                <button type="submit" class="btn btn-primary">
+                  SAVE
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn default-button collapsed text-left" type="button" data-toggle="collapse"
+                  data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                  <div>
+                    <span class="default-name">Raju Sharma</span>
+                    <span>64, New Ratna Bunglows, </span>
+                    <span>Mumbai, India.</span>
+                  </div>
+                  <img class="img-fluid" src="static/chevron_down.png" />
+                </button>
+              </h2>
+            </div>
+
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
+              <form>
+                <div class="card-body pt-0">
+                  <div class="form-group">
+                    <label>NAME</label>
+                    <input type="text" class="form-control" placeholder="Default Text Input" />
+                  </div>
+                  <div class="form-group">
+                    <label>ADDRESS</label>
+                    <input type="text" class="form-control" placeholder="Default Text Input" />
+                  </div>
+                  <div class="form-group">
+                    <label>ZIP CODE</label>
+                    <input type="text" class="form-control" placeholder="Default Text Input" />
+                  </div>
+                  <div class="form-group">
+                    <label>CITY</label>
+                    <input type="text" class="form-control" placeholder="Default Text Input" />
+                  </div>
+                  <div class="form-group">
+                    <label>COUNTRY</label>
+                    <select class="form-control" placeholder="Default Text Input">
+                      <option>INDIA</option>
+                      <option>USA</option>
+                      <option>UK</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="card-foot">
+                  <button type="submit" class="btn btn-outline-primary">
+                    CANCEL
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    SAVE
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</center>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+<script>
+  var active = document.querySelector(".collapse.show");
+  active.parentNode.style.border = "1px solid #ea8523";
+</script>
+
+
 
   <table class="table table-bordered">
     <tr>
