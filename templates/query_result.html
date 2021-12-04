@@ -151,7 +151,7 @@ Submit Page
                   <button class="btn default-button collapsed text-left" type="button" data-toggle="collapse"
                     data-target="#collapseOne{{res[0]}}" aria-expanded="true" aria-controls="collapseOne{{res[0]}}">
                     <div>
-                      <span class="default-name">搜尋結果一</span>
+                      <span class="default-name">{{res[1]}}</span>
                       <span> {{res[1]}} </span>
                       <span> 分享連結 </span>
                     </div>
@@ -163,9 +163,9 @@ Submit Page
               <div id="collapseOne{{res[0]}}" class="collapse" aria-labelledby="headingOne">
                 <div>
                   <br> 資源敘述: {{res[2]}}
-                  <br> 參考連結： "https://www.youtube.com/embed/{{result[0][3][-11:]}}"
+                  <br> 參考連結： "https://www.youtube.com/embed/{{res[3][-11:]}}"
                   <br>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/{{result[0][3][-11:]}}"
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/{{res[3][-11:]}}"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
