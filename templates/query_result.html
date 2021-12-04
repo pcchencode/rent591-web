@@ -149,10 +149,10 @@ Submit Page
           {% for res in result %}
             {{res[2]}}
             <div class="card">
-              <div class="card-header" id="headingOne{{res[1]}}">
+              <div class="card-header" id="headingOne">
                 <h2 class="mb-0">
                   <button class="btn default-button collapsed text-left" type="button" data-toggle="collapse"
-                    data-target="#collapseOne{{res[1]}}" aria-expanded="true" aria-controls="collapseOne{{res[1]}}">
+                    data-target="#collapseOne{{res[0]}}" aria-expanded="true" aria-controls="collapseOne{{res[0]}}">
                     <div>
                       <span class="default-name">搜尋結果一</span>
                       <span> {{res[1]}} </span>
@@ -163,7 +163,7 @@ Submit Page
                 </h2>
               </div>
       
-              <div id="collapseOne{{res[1]}}" class="collapse" aria-labelledby="headingOne{{res[1]}}">
+              <div id="collapseOne{{res[0]}}" class="collapse" aria-labelledby="headingOne">
                 <div>
                   <br> 資源敘述: {{res[2]}}
                   <br> 參考連結： "https://www.youtube.com/embed/{{result[0][3][-11:]}}"
