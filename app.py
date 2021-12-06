@@ -95,7 +95,7 @@ def query_song():
     if form.validate_on_submit():
         q_name = request.values.get('query_name')
         sql = f"""
-        SELECT `id`, `name`, `desc`, `url` FROM `guitar_song`
+        SELECT `id`, `name`, `author`, `desc`, `url` FROM `guitar_song`
         WHERE `name`= '{q_name}'
         """
         print(sql)

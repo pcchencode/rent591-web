@@ -152,8 +152,8 @@ Submit Page
                     data-target="#collapseOne{{res[0]}}" aria-expanded="true" aria-controls="collapseOne{{res[0]}}">
                     <div>
                       <span class="default-name">{{res[1]}}</span>
-                      <span> {{res[1]}} </span>
-                      <span> 分享連結 </span>
+                      <span> {{res[2]}} </span>
+                      <span> 標籤tag </span>
                     </div>
                     <img class="img-fluid" src="static/chevron_down.png" />
                   </button>
@@ -162,8 +162,8 @@ Submit Page
       
               <div id="collapseOne{{res[0]}}" class="collapse" aria-labelledby="headingOne">
                 <div>
-                  <br> 資源敘述: {{res[2]}}
-                  <br> 參考連結： "https://www.youtube.com/embed/{{res[3][-11:]}}"
+                  <br> 資源敘述: {{res[3]}}
+                  <br> 參考連結： "https://www.youtube.com/embed/{{res[4][-11:]}}"
                   <br>
                   <iframe width="560" height="315" src="https://www.youtube.com/embed/{{res[3][-11:]}}"
                     title="YouTube video player" frameborder="0"
@@ -188,8 +188,8 @@ Submit Page
   active.parentNode.style.border = "1px solid #ea8523";
 </script>
 
-<!-- jinja for loop table
-  <table class="table table-bordered">
+<!-- jinja for loop table -->
+  <!-- <table class="table table-bordered">
     <tr>
       <th>id</th>
       <th>name</th>
@@ -208,6 +208,6 @@ Submit Page
     {% endfor %}
   </table>
   <input type="button" value="返回首頁" onclick="self.location.href='home-page'"/>
-  <input type="button" value="再搜索看看" onclick="self.location.href='query-song'"/>
-{% endblock %} -->
+  <input type="button" value="再搜索看看" onclick="self.location.href='query-song'"/> -->
+{% endblock %}
 
