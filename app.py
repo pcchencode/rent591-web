@@ -66,6 +66,7 @@ def song_share():
     #  flask_wtf類中提供判斷是否表單提交過來的method，不需要自行利用request.method來做判斷
     if form.validate_on_submit():
         s_name = request.values.get('song_name')
+        author = request.values.get('author')
         desc = request.values.get('desc')
         url = request.values.get('url')
         sql = f"""
