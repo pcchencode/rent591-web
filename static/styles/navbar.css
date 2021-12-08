@@ -40,3 +40,10 @@ top: 47px;
     background-clip: border-box;
     /* background-color: gray; */
 }
+
+.navbar-nav > .active > a { 
+    background: transparent !important;
+    color: white !important;
+    border-bottom: 2px solid yellow !important;
+    border-radius: 0px !important;
+}
