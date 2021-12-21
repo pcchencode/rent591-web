@@ -21,9 +21,9 @@ db_name = aws_db_conf.db_name
 app = Flask(__name__)
 # lhc = db.connect(host='127.0.0.1', user='root', password='')
 
-# @app.route('/home')
-# def home_page():
-#     return render_template('home.html')
+@app.route('/')
+def index():
+    return "SUCCESS"
 
 @app.route('/home-page')
 def home_page():
@@ -120,7 +120,7 @@ def test_accordion():
 
 
 @app.route('/js-test')
-def index():
+def js_index():
     # js_test.html 會因為點擊觸發 javascript, 進而改變 html
     return render_template('js_test.html')
 
@@ -141,3 +141,4 @@ def card():
 if __name__ == '__main__':
     app.config['SECRET_KEY']='your key' #這是因為flask_wtf預設需要設置密碼，也是為了避免一開始所說的CSRF攻擊。
     app.run(debug=True)
+    # app.run(host="0.0.0.0", port=5000)
