@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
+
 import os
 from flask import Flask
 # from flask_pymongo import PyMongo # pip install flask_pymongo
