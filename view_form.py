@@ -2,7 +2,7 @@
 from flask_wtf import FlaskForm
 #  各別引入需求欄位類別
 from wtforms import StringField, SubmitField, TextAreaField
-from wtforms.fields.html5 import EmailField
+# from wtforms.fields.html5 import EmailField
 #  引入驗證
 from wtforms.validators import DataRequired, Email
 

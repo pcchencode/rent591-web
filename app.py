@@ -22,7 +22,7 @@ app = Flask(__name__)
 # lhc = db.connect(host='127.0.0.1', user='root', password='')
 
 @app.route('/')
-def home_test():
+def index():
     return "SUCCESS"
 
 @app.route('/home-page')
@@ -120,7 +120,7 @@ def test_accordion():
 
 
 @app.route('/js-test')
-def index():
+def js_index():
     # js_test.html 會因為點擊觸發 javascript, 進而改變 html
     return render_template('js_test.html')
 
