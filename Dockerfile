@@ -1,9 +1,25 @@
-FROM python:3.6
-WORKDIR /Project/demo
+FROM python:3.7
+WORKDIR /web-song-share
 
-COPY requirements.txt ./
-RUN pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+COPY requirements.txt /web-song-share
+# RUN apt-get update && apt-get install -y libsm6 libxext6 libxrender-dev libglib2.0-0 \
+#     python3-pip \
+#     cmake \ 
+#     musl-dev \
+#     openssh-client \
+#     git \
+#     default-libmysqlclient-dev\
+#     g++ \
+#     libffi-dev \
+#     make \
+#     ffmpeg \
+#     vim \
+    # && pip3 install --upgrade pip \
+    # && rm -f /var/cache/apk/* \
+    # && rm -rf ~/.cache \
+RUN pip3 install --no-cache-dir --compile -r requirements.txt
 
-COPY . .
+COPY ./ /web-song-share/
 
-CMD ["gunicorn", "start:app", "-c", "./gunicorn.conf.py"]
+CMD ["gunicorn", "-w", "1", "-b", "0.0.0.0:80", "app:app"]
+# gunicorn -w 1 -b 0.0.0.0:80 run:app --daemon
