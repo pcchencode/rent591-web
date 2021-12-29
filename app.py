@@ -19,6 +19,7 @@ user_name = aws_db_conf.user_name
 password = aws_db_conf.password
 port = aws_db_conf.port
 db_name = aws_db_conf.db_name
+print(host_name, user_name, password, port, db_name)
 
 
 app = Flask(__name__)
