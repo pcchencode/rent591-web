@@ -23,6 +23,7 @@ print(host_name, user_name, password, port, db_name)
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY']='your key' #這是因為flask_wtf預設需要設置密碼，也是為了避免一開始所說的CSRF攻擊。
 # lhc = db.connect(host='127.0.0.1', user='root', password='')
 
 @app.route('/')
