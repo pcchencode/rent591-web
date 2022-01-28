@@ -125,9 +125,39 @@ Submit Page
     color: #ea8523;
     margin-right: 16px;
   }
+
+  .accordion .card-header button:after {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f106 \00a0 隱藏";
+  }
+  .accordion .card-header button.collapsed:after {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f107 \00a0 更多 ";
+  }
 </style>
 
-<!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" /> -->
 <center>
   您所搜尋的歌曲關鍵字為：{{ query_name }} <br>
   以下為自學資源，自學愉快：）
@@ -140,7 +170,6 @@ Submit Page
 </center>
 
 <center>
-  
     <div class="page-wrapper">
       <section class="default-address">
         <div class="accordion" id="accordionAddress">
@@ -155,7 +184,9 @@ Submit Page
                       <span> {{res[2]}} </span>
                       <span> 標籤tag </span>
                     </div>
-                    <img class="img-fluid" src="static/chevron_down.png" />
+                    <!-- <img class="img-fluid" src="static/chevron_down.png" /> -->
+                    <!-- <button type="button" class="btn btn-primary btn-sm float-right collapsed" data-toggle="collapse"
+                      data-target="#collapseOne"></button> -->
                   </button>
                 </h2>
               </div>
