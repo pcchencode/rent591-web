@@ -34,9 +34,30 @@ Submit Page
 {% endblock %}
 
 {% block content %}
-  Song Not Found :( <br>
-  <input type="button" value="返回首頁" onclick="self.location.href='home-page'" />
-  <input type="button" value="再搜索看看" onclick="self.location.href='query-song'" />
+<style>
+  .flex{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:600px;
+    height:600px;
+    background-color:#eee;
+  }
+
+.container{
+  margin:0 auto;
+  width: 600px;
+}
+</style>
+<div class="container">
+  <p>
+    Song Not Found :( <br>
+    <input type="button" value="返回首頁" onclick="self.location.href='home-page'" />
+    <input type="button" value="再搜索看看" onclick="self.location.href='query-song'" />
+  </p>
+</div>
+
+
 {% endblock %}
 
 <!-- <!DOCTYPE html>
