@@ -19,16 +19,15 @@
   </title>
 </head>
 
-<body>
 <style>
   @import url('static/styles/navbar.css');
 
-  #nav1{  
-  background-color: rgba(248, 237, 237, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  color: #FFFFFF;
+  #nav1 {
+    background-color: rgba(248, 237, 237, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #FFFFFF;
   }
 
   .navbar-dark .navbar-brand {
@@ -43,61 +42,27 @@
     color: rgb(94, 87, 87);
   }
 
-  .navbar-nav > .active > a { 
-      background: transparent !important;
-      color: rgb(94, 87, 87) !important;
-      border-bottom: 2px solid yellow !important;
-      border-radius: 0px !important;
+  .navbar-nav>.active>a {
+    background: transparent !important;
+    color: rgb(94, 87, 87) !important;
+    border-bottom: 2px solid yellow !important;
+    border-radius: 0px !important;
   }
 
-  /* #nav1
-  {  
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    color: #FFFFFF;
+  body {
+    background-color: white;
+    color: black;
   }
 
-  .dropdown-menu
-  {  
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(10px);
-    color: #FFFFFF;
-    top: 47px;
+  .dark-mode {
+    background-color: black;
+    color: white;
   }
-
-  .dropdown-item{
-      text-align: center;
-      border-radius: 5px;
-      color: #FFFFFF;
-      padding: 5px;
-      background-clip: content-box;
-  }
-
-  .dropdown-item:hover{
-      color: #FFFFFF;
-      padding: 5px;
-      background: rgb(151, 149, 149);
-      background-clip: content-box;
-      border-radius: 10px;
-  }
-
-  .nav-item:hover{
-      border-radius: 5px;
-      padding: 0.2px;
-      background: rgb(151, 149, 149);
-      background-clip: border-box;
-  }
-
-  .navbar-nav > .active > a { 
-      background: transparent !important;
-      color: white !important;
-      border-bottom: 2px solid yellow !important;
-      border-radius: 0px !important;
-  } */
 </style>
+
+
+<body>
+
 <!-- Navbar here -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark" id="nav1">
   <a class="navbar-brand" href="{{ url_for('home_page') }}"><i class="fas fa-home"> Song Share </i></a>
@@ -187,6 +152,14 @@
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <button onclick="myFunction()">Toggle dark mode</button>
+
+  <script>
+    function myFunction() {
+      var element = document.body;
+      element.classList.toggle("dark-mode");
+    }
+  </script>
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
