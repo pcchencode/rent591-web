@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
 
   <link rel="icon" href="/static/guitar.ico" sizes="32x32">
 
@@ -85,7 +85,8 @@
 }
 
 input:checked + .slider {
-  background-color: #2ab934;
+  /* background-color: #2ab934; */
+  background-color: black;
 }
 
 input:focus + .slider {
@@ -101,21 +102,28 @@ input:checked + .slider:before {
 /*------ ADDED CSS ---------*/
 .slider:after
 {
- content:'OFF';
- color: white;
- display: block;
- position: absolute;
- transform: translate(-50%,-50%);
- top: 50%;
- left: 70%;
- font-size: 10px;
- font-family: Verdana, sans-serif;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f185";
+  /* content:'OFF'; */
+  color: rgb(244, 183, 36);
+  display: block;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 70%;
+  font-size: 20px;
+  /* font-family: Verdana, sans-serif; */
 }
 
 input:checked + .slider:after
 {  
-  content:'ON';
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f186";
   left: 30%;
+  font-size: 20px;
+  color: rgb(83, 15, 83);
 }
 
 /*--------- END --------*/
@@ -233,27 +241,6 @@ input:checked + .slider:after
       }
     }
   </script>
-  <button onclick="swapStyleSheet()">New Style Sheet</button>
-  <!-- Rounded switch -->
-  <label class="switch">
-    <input type="checkbox" onchange="swapStyleSheet()">
-    <span class="slider round"></span>
-  </label>
-
-  <label class="switch">
-    <input type="checkbox" id="togBtn">
-    <div class="slider round"></div>
-  </label>
-
-  <!-- <button onclick="swapStyleSheet('static/styles/light_navbar.css')">Default Style Sheet</button> -->
-  
-  <!-- <button onclick="myFunction()">Toggle dark mode</button>
-  <script>
-    function myFunction() {
-      var element = document.body;
-      element.classList.toggle("dark-mode");
-    }
-  </script> -->
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
