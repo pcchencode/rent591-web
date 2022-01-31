@@ -20,9 +20,9 @@
 </head>
 
 <style>
-  @import url('static/styles/navbar.css');
+  @import url('static/styles/night_navbar.css'); /* dark mode navbar */
 
-  #nav1 {
+  /* #nav1 {
     background-color: rgba(248, 237, 237, 0.6);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(10px);
@@ -42,22 +42,75 @@
     color: rgb(94, 87, 87);
   }
 
-  .navbar-nav>.active>a {
+  .navbar-nav > .active > a {
     background: transparent !important;
     color: rgb(94, 87, 87) !important;
     border-bottom: 2px solid yellow !important;
     border-radius: 0px !important;
-  }
+  } */
 
-  body {
-    background-color: white;
-    color: black;
-  }
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
 
-  .dark-mode {
-    background-color: black;
-    color: white;
-  }
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
 </style>
 
 
@@ -99,6 +152,12 @@
     </ul>
 
     <ul class="navbar-nav">
+      <li class="nav_item">
+        <label class="switch">
+          <input type="checkbox" onchange="swapStyleSheet()">
+          <span class="slider round"></span>
+        </label>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="javascript:;" onclick="javascritp:alert('尚未開放，敬請期待：）');"><i class="fas fa-user"> Login </i></a>
       </li>
@@ -152,14 +211,36 @@
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <button onclick="myFunction()">Toggle dark mode</button>
 
+  <link id="pagestyle" name="default" rel="stylesheet" type="text/css" href="static/styles/light_navbar.css">
+  <script>
+    function swapStyleSheet() {
+      var foo = document.getElementById('pagestyle');
+      // alert(foo.getAttribute('name'));
+      if (foo.getAttribute('name') == "default") {
+        foo.setAttribute('href', 'static/styles/night_navbar.css');
+        foo.setAttribute('name', 'active')
+      } else{
+        foo.setAttribute('href', 'static/styles/light_navbar.css');
+        foo.setAttribute('name', 'default')
+      }
+    }
+  </script>
+  <button onclick="swapStyleSheet()">New Style Sheet</button>
+  <!-- Rounded switch -->
+  <label class="switch">
+    <input type="checkbox" onchange="swapStyleSheet()">
+    <span class="slider round"></span>
+  </label>
+  <!-- <button onclick="swapStyleSheet('static/styles/light_navbar.css')">Default Style Sheet</button> -->
+  
+  <!-- <button onclick="myFunction()">Toggle dark mode</button>
   <script>
     function myFunction() {
       var element = document.body;
       element.classList.toggle("dark-mode");
     }
-  </script>
+  </script> -->
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
