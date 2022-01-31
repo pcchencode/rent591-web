@@ -1,10 +1,31 @@
-#nav1{  
-background-color: rgba(0, 0, 0, 0.6);
+#nav1 {
+background-color: rgba(248, 237, 237, 0.6);
 backdrop-filter: blur(8px);
 -webkit-backdrop-filter: blur(10px);
 backdrop-filter: blur(10px);
 color: #FFFFFF;
 }
+
+.navbar-dark .navbar-brand {
+color: rgb(94, 87, 87);
+}
+
+.navbar-dark .navbar-brand:hover {
+color: black;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+color: rgb(94, 87, 87);
+}
+
+.navbar-nav > .active > a {
+background: transparent !important;
+color: rgb(94, 87, 87) !important;
+border-bottom: 2px solid yellow !important;
+border-radius: 0px !important;
+}
+
+
 
 .dropdown-menu{  
 background-color: rgba(0, 0, 0, 0.6);

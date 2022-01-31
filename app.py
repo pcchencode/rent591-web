@@ -111,7 +111,7 @@ def query_song():
             # return f"your query result {res}"
             return render_template('query_result.html', result=res, search_active='active', query_name=q_name)
         else:
-            return render_template('query_failed.html', search_active='active')
+            return render_template('query_failed.html', search_active='active', query_name=q_name)
     else:
         return render_template('query_song.html', form=form, search_active='active')
 

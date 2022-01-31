@@ -125,9 +125,50 @@ Submit Page
     color: #ea8523;
     margin-right: 16px;
   }
+
+  .accordion .card-header button::after {
+      background-color: #04AA6D;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      font-size: 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f106 \00a0 隱藏";
+  }
+  .accordion .card-header button.collapsed::after { /*::after偽元素*/
+      background-color: #04AA6D;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      font-size: 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f107 \00a0 更多 ";
+  }
+
+  .accordion .card-header button:hover::after {
+      background-color: #46a049;
+  }
+
+  .accordion .card-header button.collapsed:hover::after {
+      background-color: #46a049;
+  }
+
 </style>
 
-<!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" /> -->
 <center>
   您所搜尋的歌曲關鍵字為：{{ query_name }} <br>
   以下為自學資源，自學愉快：）
@@ -140,44 +181,42 @@ Submit Page
 </center>
 
 <center>
-  
-    <div class="page-wrapper">
-      <section class="default-address">
-        <div class="accordion" id="accordionAddress">
-          {% for res in result %}
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
-                  <button class="btn default-button collapsed text-left" type="button" data-toggle="collapse"
-                    data-target="#collapseOne{{res[0]}}" aria-expanded="true" aria-controls="collapseOne{{res[0]}}">
-                    <div>
-                      <span class="default-name">{{res[1]}}</span>
-                      <span> {{res[2]}} </span>
-                      <span> 標籤tag </span>
-                    </div>
-                    <img class="img-fluid" src="static/chevron_down.png" />
-                  </button>
-                </h2>
-              </div>
-      
-              <div id="collapseOne{{res[0]}}" class="collapse" aria-labelledby="headingOne">
-                <div>
-                  <br> 資源敘述: {{res[3]}}
-                  <br> 參考連結： "https://www.youtube.com/embed/{{res[4][-11:]}}"
-                  <br>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/{{res[4][-11:]}}"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                  </iframe>
-                </div>
+  <div class="page-wrapper">
+    <section class="default-address">
+      <div class="accordion" id="accordionAddress">
+        {% for res in result %}
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn default-button collapsed text-left" type="button" data-toggle="collapse"
+                  data-target="#collapseOne{{res[0]}}" aria-expanded="true" aria-controls="collapseOne{{res[0]}}">
+                  <div>
+                    <span class="default-name">{{res[1]}}</span>
+                    <span> {{res[2]}} </span>
+                    <span> 標籤tag </span>
+                  </div>
+                  <!-- <img class="img-fluid" src="static/chevron_down.png" /> -->
+                </button>
+              </h2>
+            </div>
+    
+            <div id="collapseOne{{res[0]}}" class="collapse" aria-labelledby="headingOne">
+              <div>
+                <br> 資源敘述: {{res[3]}}
+                <br> 參考連結： "https://www.youtube.com/embed/{{res[4][-11:]}}"
+                <br>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{res[4][-11:]}}"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
               </div>
             </div>
-          {% endfor %}
-        </div>
-      </section>
-    </div>
-  
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
 </center>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
