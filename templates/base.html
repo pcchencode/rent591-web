@@ -53,8 +53,8 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 30px;
+  height: 17px;
 }
 
 /* Hide default HTML checkbox */
@@ -80,8 +80,8 @@
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 10px;
+  width: 10px;
   left: 4px;
   bottom: 4px;
   background-color: white;
@@ -98,9 +98,9 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  -webkit-transform: translateX(12px);
+  -ms-transform: translateX(12px);
+  transform: translateX(12px);
 }
 
 /* Rounded sliders */
@@ -110,6 +110,10 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.nav-item .custom-control { 
+line-height: 20px; 
 }
 </style>
 
@@ -122,6 +126,7 @@ input:checked + .slider:before {
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
       <!-- <li class="nav-item {{home_active}}">
@@ -152,12 +157,6 @@ input:checked + .slider:before {
     </ul>
 
     <ul class="navbar-nav">
-      <li class="nav_item">
-        <label class="switch">
-          <input type="checkbox" onchange="swapStyleSheet()">
-          <span class="slider round"></span>
-        </label>
-      </li>
       <li class="nav-item">
         <a class="nav-link" href="javascript:;" onclick="javascritp:alert('尚未開放，敬請期待：）');"><i class="fas fa-user"> Login </i></a>
       </li>
@@ -190,6 +189,10 @@ input:checked + .slider:before {
       </li>
     </ul>
   </div>
+  <label class="switch">
+    <input type="checkbox" onchange="swapStyleSheet()">
+    <span class="slider round"></span>
+  </label>
 </nav>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
   integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
