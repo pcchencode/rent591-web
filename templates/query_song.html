@@ -32,20 +32,18 @@
 }
 
 .form-control {
-  border: 1px solid rgba(38, 50, 56, 0.8);
-  outline: 1px solid rgba(38, 50, 56, 0.8);
-  height: 42px;
-  width: 288px;
-  line-height: 42px;
-  /* padding: 0.16px; */
-  background-color: rgba(255, 255, 255, 0.8);
-  color: #212121;
-  border: 0;
-  float: left;
-  -webkit-border-radius: 4px 0 0 4px;
-  border-radius: 4px 0 0 4px;
+ width: 100%;
+ height: 32px;
+ font-size: 20px;
+ border: 3px solid #3D1101;
+ background-color: #efe9e7;
 }
 
+.form-control:focus {
+  outline: none !important;
+  border:1px solid red;
+  box-shadow: 0 0 10px #719ECE;
+}
 
 .textbox:focus {
   outline: 0;
@@ -53,25 +51,16 @@
 }
 
 .button {
-  border: 1px solid rgba(38, 50, 56, 0.8);
-  outline: 1px solid rgba(38, 50, 56, 0.8);
-  background: none;
-  background-color: rgba(38, 50, 56, 0.8);
-  float: left;
-  height: 42px;
-  width: 40px;
-  text-align: center;
-  line-height: 42px;
-  border: 0;
-  color: #FFF;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: 16px;
-  text-rendering: auto;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  -webkit-transition: background-color .4s ease;
-  transition: background-color .4s ease;
-  -webkit-border-radius: 0 4px 4px 0;
-  border-radius: 0 4px 4px 0;
+ width: 36px;
+ height: 32px;
+ background-color: #3D1101;
+ color:#efe9e7;
+ outline:none;
+ border: 2px solid #3D1101;
+ cursor: pointer; 
+ position: absolute;
+ top: 0;
+ right: 0;
 }
 
 .button:hover {
@@ -88,6 +77,18 @@ font-family: 'Lato', sans-serif;
 font-size: 20px; 
 font-weight: 300; 
 line-height: 58px;
+}
+
+.wrap {
+  max-width: 960px;
+  margin: 20px auto 0 auto;
+  height: auto;
+}
+
+.search {
+  position: relative;
+  width: 80%;
+  float: left;
 }
 </style>
 <!-- <form method="post" action="{{ url_for('query_song') }}">
@@ -111,10 +112,15 @@ line-height: 58px;
             <br>
             <br>
             <br>
-            <p class="box-info">一鍵輸入你想知道的歌曲～</p>
-            {{ form.hidden_tag() }}
-            {{ form.query_name(class="form-control", placeholder="歌曲名稱") }}
-            <button type=submit class="button"><i class="fas fa-search"></i></button>
+            <div class="wrap">
+              <div class="search">
+                <!-- <p class="box-info">一鍵輸入你想知道的歌曲～</p> -->
+                {{ form.hidden_tag() }}
+                {{ form.query_name(class="form-control", placeholder="歌曲名稱") }}
+                <button type=submit class="button"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+
             <br>
             <br>
             <br>
