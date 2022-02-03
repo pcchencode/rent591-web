@@ -32,11 +32,11 @@
 }
 
 .form-control {
- width: 100%;
- height: 32px;
- font-size: 20px;
- border: 3px solid #3D1101;
- background-color: #efe9e7;
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  border: 3px solid #3D1101;
+  background-color: #efe9e7;
 }
 
 .form-control:focus {
@@ -51,8 +51,8 @@
 }
 
 .button {
- width: 36px;
- height: 32px;
+ width: 50px;
+ height: 50px;
  background-color: #3D1101;
  color:#efe9e7;
  outline:none;
@@ -86,10 +86,24 @@ line-height: 58px;
 }
 
 .search {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
   width: 80%;
   float: left;
 }
+
+.form-group {
+  height: 550px;
+}
+
+.RecommendationList_container {
+  text-align: center;
+  transition: all .3s ease;
+  min-height: 40vh;
+  padding: 0.8rem 0;
+}
+
 </style>
 <!-- <form method="post" action="{{ url_for('query_song') }}">
   {{ form.hidden_tag() }}
@@ -98,48 +112,29 @@ line-height: 58px;
 </form> -->
 
 <form action="{{ url_for('query_song') }}" , method="post">
-  <div class="container-fluid"><br>
+  <div class="container-fluid">
     <div class="row align-items-center justify-content-center">
       <div class="col-md-4 col-md-offset-3">
         <div class="form-group">
-          <div style="height: 90%">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="wrap">
-              <div class="search">
-                <!-- <p class="box-info">一鍵輸入你想知道的歌曲～</p> -->
-                {{ form.hidden_tag() }}
-                {{ form.query_name(class="form-control", placeholder="歌曲名稱") }}
-                <button type=submit class="button"><i class="fas fa-search"></i></button>
-              </div>
+          <div class="wrap">
+            <div class="search">
+              <!-- <p class="box-info">一鍵輸入你想知道的歌曲～</p> -->
+              {{ form.hidden_tag() }}
+              {{ form.query_name(class="form-control", placeholder="歌曲名稱") }}
+              <button type=submit class="button"><i class="fas fa-search"></i></button>
             </div>
-
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
           </div>
+
         </div>
       </div>
     </div>
   </div>
 </form>
 <br>
+
+<div class="RecommendationList_container">
+  <h1> 熱門資源 </h1>
+</div>
 
 
 {% endblock %}
