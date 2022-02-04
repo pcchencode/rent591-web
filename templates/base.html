@@ -136,7 +136,9 @@ input:checked + .slider:after
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark" id="nav1">
   <a class="navbar-brand" href="{{ url_for('home_page') }}"><i class="fas fa-home"> Song Share </i></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-    <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon">
+      <i class="fas fa-bars" style="color:rgb(160, 153, 153); font-size:28px;"></i>
+    </span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNav">
@@ -199,12 +201,15 @@ input:checked + .slider:after
             data-placement="right">Separated link</a>
         </div>
       </li>
+      <label class="switch">
+        <input type="checkbox" onchange="swapStyleSheet()">
+        <span class="slider round"></span>
+      </label>
     </ul>
   </div>
-  <label class="switch">
-    <input type="checkbox" onchange="swapStyleSheet()">
-    <span class="slider round"></span>
-  </label>
+
+
+
 </nav>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
   integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

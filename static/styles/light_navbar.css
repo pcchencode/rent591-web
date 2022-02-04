@@ -6,6 +6,10 @@ backdrop-filter: blur(10px);
 color: #FFFFFF;
 }
 
+.navbar-toggler-icon {
+    color: black;
+}
+
 .navbar-dark .navbar-brand {
 color: rgb(94, 87, 87);
 }
@@ -24,8 +28,6 @@ color: rgb(94, 87, 87) !important;
 border-bottom: 2px solid yellow !important;
 border-radius: 0px !important;
 }
-
-
 
 .dropdown-menu{  
 background-color: rgba(0, 0, 0, 0.6);
