@@ -37,6 +37,10 @@
   font-size: 20px;
   border: 3px solid #3D1101;
   background-color: #efe9e7;
+  justify-content: center;
+  /* position: relative; 
+  left: 50%;
+  transform: translateX(-50%); */
 }
 
 .form-control:focus {
@@ -74,9 +78,13 @@
 .box-info {
 color: #ffffff; 
 font-family: 'Lato', sans-serif; 
-font-size: 20px; 
+font-size: 30px; 
 font-weight: 300; 
 line-height: 58px;
+height: 230px;
+line-height: 230px;
+text-align: center;
+border: 2px dashed #f69c55;
 }
 
 .wrap {
@@ -89,7 +97,7 @@ line-height: 58px;
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  width: 80%;
+  width: 93%;
   float: left;
 }
 
@@ -117,12 +125,12 @@ line-height: 58px;
       <div class="col-md-4 col-md-offset-3", style="border:1px solid red;">
         <div class="form-group">
           <div class="wrap">
-            <p class="box-info">一鍵輸入你想知道的歌曲～</p>
-            <div class="search">
+            <div class="box-info" height:230px;">一鍵輸入你想知道的歌曲～</div>
+            <div class="search", style="border:1px solid red;">
               <!-- <p class="box-info">一鍵輸入你想知道的歌曲～</p> -->
               {{ form.hidden_tag() }}
               {{ form.query_name(class="form-control", placeholder="歌曲名稱") }}
-              <!-- <button type=submit class="button"><i class="fas fa-search"></i></button> -->
+              <button type=submit class="button"><i class="fas fa-search"></i></button>
             </div>
           </div>
 
