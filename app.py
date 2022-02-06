@@ -43,15 +43,9 @@ def market_page():
     ]
     return render_template('market.html', item_name='Phone', items=items)
 
-# @app.route('/test1')
-# def index():
-#     conn = db.connect(host='127.0.0.1', user='root', password='', port=3306, db='test')
-#     cur = conn.cursor()
-#     sql = "SELECT `id`, `name` FROM `reply` WHERE 1"
-#     cur.execute(sql)
-#     u = cur.fetchall()
-#     conn.close()
-#     return render_template('index.html', u=u)
+@app.route('/base2')
+def index_base2():
+    return render_template('base2.html')
 
 @app.route('/test2-aws')
 def index2():
