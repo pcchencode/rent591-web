@@ -1,9 +1,8 @@
 #nav1 {
-background-color: rgba(248, 237, 237, 0.6);
+background-color: rgba(255, 241, 241, 0.541);
 backdrop-filter: blur(8px);
 -webkit-backdrop-filter: blur(10px);
 backdrop-filter: blur(10px);
-color: #FFFFFF;
 }
 
 .navbar-toggler-icon {
@@ -19,54 +18,44 @@ color: black;
 }
 
 .navbar-dark .navbar-nav .nav-link {
-color: rgb(94, 87, 87);
+color: rgb(94, 87, 87) !important;
 }
 
-.navbar-nav > .active > a {
-background: transparent !important;
+.navbar-dark .navbar-nav .nav-link:hover {
 color: rgb(94, 87, 87) !important;
-border-bottom: 2px solid yellow !important;
-border-radius: 0px !important;
 }
 
 .dropdown-menu{  
-background-color: rgba(0, 0, 0, 0.6);
+background-color: rgba(248, 237, 237, 0.6);
 backdrop-filter: blur(8px);
 -webkit-backdrop-filter: blur(10px);
-color: #FFFFFF;
 top: 47px;
 }
 
 .dropdown-item{
     text-align: center;
     border-radius: 5px;
-    color: #FFFFFF;
+    color: rgb(94, 87, 87);
     padding: 5px;
-    /* background: rgb(151, 149, 149); */
     background-clip: content-box;
-    /* background-color: gray; */
 }
 
 .dropdown-item:hover{
-    color: #FFFFFF;
     padding: 5px;
-    background: rgb(151, 149, 149);
+    background: rgb(226, 224, 224);
     background-clip: content-box;
     border-radius: 10px;
-    /* background-color: gray; */
 }
 
 .nav-item:hover{
     border-radius: 5px;
     padding: 0.2px;
-    background: rgb(151, 149, 149);
+    background: rgb(226, 224, 224);
     background-clip: border-box;
-    /* background-color: gray; */
 }
 
 .navbar-nav > .active > a { 
     background: transparent !important;
-    color: rgb(141, 30, 30) !important;
-    border-bottom: 2px solid rgb(141, 30, 30) !important;
+    border-bottom: 2px solid maroon !important;
     border-radius: 0px !important;
 }
