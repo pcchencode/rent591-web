@@ -17,36 +17,41 @@
     {% block title %}
     {% endblock %}
   </title>
+
 </head>
-<script>
-  var cssId = 'slider_style';  // you could encode the css path itself to generate id..
-  var mode_css = localStorage.getItem("Mode");
-  if (!document.getElementById(cssId)) {
-    var body = document.getElementsByTagName('head')[0];
-    var link = document.createElement('link');
-    link.id = cssId;
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    if (mode_css == null || mode_css == "static/styles/light_navbar.css") {
-      link.href = "static/styles/pre_slider.css";
-    } else if (mode_css == "static/styles/night_navbar.css") {
-      link.href = "static/styles/post_slider.css";
-    }
-    // link.href = "static/styles/post_slider.css";
-    body.appendChild(link);
-  }
-</script>
-<!-- <link id="slider_style" name="default" rel="stylesheet" type="text/css" href="static/styles/light_navbar.css"> -->
-
-
 
 <style>
   /* dark mode navbar css */
   /* @import url('static/styles/night_navbar.css'); */
 
-  /* light mode navbar css */
-  /* @import url('static/styles/light_navbar.css'); */
-/* .switch {
+  /* #nav1 {
+    background-color: rgba(248, 237, 237, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #FFFFFF;
+  }
+
+  .navbar-dark .navbar-brand {
+    color: rgb(94, 87, 87);
+  }
+
+  .navbar-dark .navbar-brand:hover {
+    color: black;
+  }
+
+  .navbar-dark .navbar-nav .nav-link {
+    color: rgb(94, 87, 87);
+  }
+
+  .navbar-nav > .active > a {
+    background: transparent !important;
+    color: rgb(94, 87, 87) !important;
+    border-bottom: 2px solid yellow !important;
+    border-radius: 0px !important;
+  } */
+
+.switch {
   position: relative;
   display: inline-block;
   width: 90px;
@@ -62,7 +67,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #e7dada;
+  
+  background-color: black;
   -webkit-transition: .4s;
   transition: .4s;
    border-radius: 34px;
@@ -73,7 +79,7 @@
   content: "";
   height: 26px;
   width: 26px;
-  left: 4px;
+  left: 58px;
   bottom: 4px;
   background-color: white;
   -webkit-transition: .4s;
@@ -82,7 +88,8 @@
 }
 
 input:checked + .slider {
-  background-color: black;
+  /* background-color: black; */
+  background-color: #e7dada;
 }
 
 input:focus + .slider {
@@ -92,11 +99,11 @@ input:focus + .slider {
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
-  transform: translateX(55px);
+  transform: translateX(-54px);
 }
 
-
-.slider:after
+/*------ ADDED CSS ---------*/
+input:checked + .slider:after
 {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
@@ -106,19 +113,23 @@ input:checked + .slider:before {
   position: absolute;
   transform: translate(-50%,-50%);
   top: 50%;
-  left: 70%;
+  left: 80%;
   font-size: 20px;
 }
 
-input:checked + .slider:after
+.slider:after
 {  
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   content: "\f186";
-  left: 30%;
+  display: block;
+  position: absolute;
+  left: 10%;
   font-size: 20px;
   color: rgb(83, 15, 83);
-} */
+}
+
+/*--------- END --------*/
 </style>
 
 
@@ -144,6 +155,17 @@ input:checked + .slider:after
       <li class="nav-item {{search_active}}">
         <a class="nav-link" href="{{ url_for('query_song') }}"><i class="fas fa-search"> Search</i></a>
       </li>
+      <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+          aria-expanded="false" style="outline:0;"><i class="fas fa-ellipsis-v"></i> Category</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#" data-toggle="tooltip" title="此功能尚未開放" class="sidebar-item-link" data-placement="right">Piano</a>
+          <a class="dropdown-item" href="#" data-toggle="tooltip" title="此功能尚未開放" class="sidebar-item-link" data-placement="right">Python</a>
+          <a class="dropdown-item" href="#" data-toggle="tooltip" title="此功能尚未開放" class="sidebar-item-link" data-placement="right">Link 3</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" data-toggle="tooltip" title="此功能尚未開放" class="sidebar-item-link" data-placement="right">Separated link</a>
+        </div>
+      </li> -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
       <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
