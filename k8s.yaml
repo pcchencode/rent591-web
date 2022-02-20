@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-app-service
+spec:
+  selector:
+    app: flask-app
+  ports:
+  - protocol: "TCP"
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+spec:
+  selector:
+    matchLabels:
+      app: flask-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+      - name: flask-app
+        image: asia.gcr.io/my-first-project-283608/flask_app:latest
+        env:
+          - name: E_PATH
+            value: "/cred/db_config.cfg"
+        valueMounts:
+          - mountPath: /cred
+            name: aws-db-config
+      volumes:
+          - name: aws-db-config
+            # configMap:
+            #   name: aws-db-config
+            secret:
+              secretName: aws-db-config

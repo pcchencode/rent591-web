@@ -28,7 +28,7 @@ app.config['SECRET_KEY']='your key' #這是因為flask_wtf預設需要設置密�
 
 @app.route('/')
 def index():
-    return "SUCCESS!"
+    return "SUCCESS! test for k8s"
 
 @app.route('/home-page')
 def home_page():
