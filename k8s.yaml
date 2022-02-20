@@ -29,3 +29,15 @@ spec:
       containers:
       - name: flask-app
         image: asia.gcr.io/my-first-project-283608/flask_app:latest
+        env:
+          - name: E_PATH
+            value: "/cred/db_config.cfg"
+        valueMounts:
+          - mountPath: /cred
+            name: aws-db-config
+      volumes:
+          - name: aws-db-config
+            # configMap:
+            #   name: aws-db-config
+            secret:
+              secretName: aws-db-config
