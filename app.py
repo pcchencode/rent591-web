@@ -4,7 +4,7 @@
 import os
 from flask import Flask
 # from flask_pymongo import PyMongo # pip install flask_pymongo
-import pymysql as db# pip install pymysql
+import pymysql as db # pip install pymysql
 # from flask_sqlalchemy import SQLAlchemy
 from flask import request
 from flask import jsonify
