@@ -117,7 +117,6 @@ def css_test():
 def test_accordion():
     return render_template('test_accordion.html')
 
-
 @app.route('/js-test')
 def js_index():
     # js_test.html 會因為點擊觸發 javascript, 進而改變 html
