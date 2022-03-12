@@ -43,10 +43,6 @@ def market_page():
     ]
     return render_template('market.html', item_name='Phone', items=items)
 
-@app.route('/base2')
-def index_base2():
-    return render_template('base2.html')
-
 @app.route('/test2-aws')
 def index2():
     conn = db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name)
