@@ -34,6 +34,10 @@ def index():
 def home_page():
     return render_template('home2.html', home_active='active')
 
+@app.route('/zh_tw/home-page')
+def zh_tw_home_page():
+    return render_template('/zh_tw/home2.html', home_active='active')
+
 @app.route('/market')
 def market_page():
     items = [
