@@ -27,10 +27,10 @@
     link.id = cssId;
     link.rel = 'stylesheet';
     link.type = 'text/css';
-    if (mode_css == null || mode_css == "static/styles/light_navbar.css") {
-      link.href = "static/styles/pre_slider.css";
-    } else if (mode_css == "static/styles/night_navbar.css") {
-      link.href = "static/styles/post_slider.css";
+    if (mode_css == null || mode_css == "/static/styles/light_navbar.css") {
+      link.href = "/static/styles/pre_slider.css";
+    } else if (mode_css == "/static/styles/night_navbar.css") {
+      link.href = "/static/styles/post_slider.css";
     }
     // link.href = "static/styles/post_slider.css";
     body.appendChild(link);
@@ -228,7 +228,7 @@ input:checked + .slider:after
       if (mode_css != null){
         link.href = mode_css;
       }else {
-        link.href = "static/styles/light_navbar.css";
+        link.href = "/static/styles/light_navbar.css";
       }
       link.media = 'all';
       body.appendChild(link);
@@ -241,12 +241,12 @@ input:checked + .slider:after
       var foo = document.getElementById('pagestyle');
       var storageKey = "Mode";
       var mode_css = localStorage.getItem("Mode");
-      if (mode_css == "static/styles/light_navbar.css" || mode_css == null) {
-        foo.setAttribute('href', 'static/styles/night_navbar.css');
-        localStorage.setItem(storageKey, "static/styles/night_navbar.css");
-      } else if (mode_css == "static/styles/night_navbar.css") {
-        foo.setAttribute('href', 'static/styles/light_navbar.css');
-        localStorage.setItem(storageKey, "static/styles/light_navbar.css");
+      if (mode_css == "/static/styles/light_navbar.css" || mode_css == null) {
+        foo.setAttribute('href', '/static/styles/night_navbar.css');
+        localStorage.setItem(storageKey, "/static/styles/night_navbar.css");
+      } else if (mode_css == "/static/styles/night_navbar.css") {
+        foo.setAttribute('href', '/static/styles/light_navbar.css');
+        localStorage.setItem(storageKey, "/static/styles/light_navbar.css");
       }
 
       // if (foo.getAttribute('name') == "default") {
