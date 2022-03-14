@@ -245,7 +245,19 @@ body, html {
     </div>
   </div> -->
 </div>
+<a id="test_link"></a>
+
 <script type="text/javascript" src="/static/js/accordion.js">
+</script>
+
+<script>
+  var a = document.getElementById('test_link');
+  // a.href = "https://www.google.com"
+  a.textContent = window.location.pathname
+  // if path_name == "zh_tw":
+  //   a.href = "/"
+  // else:
+  //   a.href += "zh_tw"
 </script>
 
 <div class="empty-block">
