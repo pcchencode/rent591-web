@@ -182,6 +182,16 @@ input:checked + .slider:after
             data-placement="right">Separated link</a>
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+          aria-expanded="false" style="outline:0;">語言</a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="/zh_tw/home-page" class="sidebar-item-link"
+            data-placement="right">中文</a>
+          <a class="dropdown-item" href="/home-page" class="sidebar-item-link"
+            data-placement="right">English</a>
+        </div>
+      </li>
       <label class="switch">
         <input type="checkbox" onchange="swapStyleSheet()">
         <span class="slider round"></span>
@@ -210,11 +220,6 @@ input:checked + .slider:after
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <!-- <script type="text/javascript">
-    var storageKey = "Mode";
-    localStorage.setItem(storageKey, "static/styles/light_navbar.css");
-    mode_css = localStorage.getItem("Mode");
-  </script> -->
 
   <script>
     var cssId = 'pagestyle';  // you could encode the css path itself to generate id..
@@ -234,7 +239,6 @@ input:checked + .slider:after
       body.appendChild(link);
     }
   </script>
-  <!-- <link id="pagestyle" name="default" rel="stylesheet" type="text/css" href="/static/styles/light_navbar.css"> -->
 
   <script>
     function swapStyleSheet() {
@@ -248,16 +252,6 @@ input:checked + .slider:after
         foo.setAttribute('href', '/static/styles/light_navbar.css');
         localStorage.setItem(storageKey, "/static/styles/light_navbar.css");
       }
-
-      // if (foo.getAttribute('name') == "default") {
-      //   foo.setAttribute('href', 'static/styles/night_navbar.css');
-      //   foo.setAttribute('name', 'active');
-      //   localStorage.setItem(storageKey, "static/styles/night_navbar.css");
-      // } else{
-      //   foo.setAttribute('href', 'static/styles/light_navbar.css');
-      //   foo.setAttribute('name', 'default');
-      //   localStorage.setItem(storageKey, "static/styles/light_navbar.css")
-      // }
     }
   </script>
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
