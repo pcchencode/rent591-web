@@ -1,0 +1,76 @@
+{% extends '/zh_tw/zh_tw_base.html' %}
+<link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}
+  Share Now
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block content %}
+  <!-- <form method="POST" action="{{ url_for('song_share') }}">
+    {{ form.hidden_tag() }}
+    <p>{{ form.song_name.label }} {{ form.song_name }}</p>
+    <p>{{ form.desc.label }} {{ form.desc }}</p>
+    <p>{{ form.url.label }} {{ form.url }}</p>
+    <p>{{ form.submit }}</p>
+  </form> -->
+
+<style>
+  .form-group {
+    border-radius: 20px;
+    background: #f3efef;
+    padding: 30px;
+  }
+
+  .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+              color: #D3D3D3;
+              opacity: 1; /* Firefox */
+  }
+
+  .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+              color: #D3D3D3;
+  }
+
+  .form-control::-ms-input-placeholder { /* Microsoft Edge */
+              color: #D3D3D3;
+  }
+</style>
+
+<form action="{{ url_for('song_share') }}" , method="post">
+  {{ form.hidden_tag() }}
+  
+  <div class="container"><br>
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="form-group">
+          <div style="height: 80%">
+            {{ form.song_name.label(style="font-weight: bold;") }}
+            {{ form.song_name(class="form-control", placeholder="請輸入欲分享的歌曲名稱") }}
+          </div>
+          <br>
+          <div style="height: 80%">
+            {{ form.author.label(style="font-weight: bold;") }}
+            {{ form.author(class="form-control", placeholder="請輸入該曲目的演奏者") }}
+          </div>
+          <br>
+          <div class="desc_field">
+            {{ form.desc.label(style="font-weight: bold;") }}
+            {{ form.desc(class="form-control", placeholder="具體描述如何使用這項資源", rows='7', style="background-color: #FFFFFF;") }}
+          </div>
+          <br>
+          {{ form.url.label(style="font-weight: bold;") }}
+          {{ form.url(class="form-control", placeholder="參考的各項資料來源網址", rows='6') }}
+          <br>
+        </div>
+      </div>      
+    </div>
+   </div>
+          <center>
+            <button type="submit" class="btn btn-success">Submit</button>
+          </center>
+</form>
+<br>
+{% endblock %}

@@ -84,6 +84,33 @@ def song_share():
     #  如果不是提交過來的表單，就是GET，這時候就回傳user.html網頁
     return render_template('guitar_song.html', form=form, share_now_active='active')
 
+@app.route('/zh_tw/song-share', methods=['GET', 'POST'])
+def zh_tw_song_share():
+    conn = db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name)
+    cur = conn.cursor()
+    form = SongForm()
+    #  flask_wtf類中提供判斷是否表單提交過來的method，不需要自行利用request.method來做判斷
+    if form.validate_on_submit():
+        s_name = request.values.get('song_name')
+        author = request.values.get('author')
+        desc = request.values.get('desc')
+        url = request.values.get('url')
+        sql = f"""
+        INSERT INTO guitar_song(`name`, `desc`, `url`) VALUES ('{s_name}', '{desc}', '{url}')
+        """
+        # print(sql)
+        try:
+            cur.execute(sql)
+            conn.commit()
+            return render_template('/zh_tw/submit_success.html', s_name=s_name, share_now_active='active')
+        except Exception as e:
+            conn.rollback()
+            print(e)
+            return render_template('/zh_tw/submit_failed.html', err=e, share_now_active='active')
+        # return f'Success Submit {s_name} {desc} {url}'
+    #  如果不是提交過來的表單，就是GET，這時候就回傳user.html網頁
+    return render_template('/zh_tw/guitar_song.html', form=form, share_now_active='active')
+
 
 @app.route('/query-song', methods=['GET', 'POST'])
 def query_song():
