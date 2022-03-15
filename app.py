@@ -9,7 +9,7 @@ import pymysql as db # pip install pymysql
 from flask import request
 from flask import jsonify
 from flask import render_template
-from view_form import SongForm, SearchForm
+from view_form import SongForm, zh_tw_SongForm, SearchForm
 from lib.conf import AWS_db_credential
 
 # credential imported from db_config.cfg
@@ -88,7 +88,7 @@ def song_share():
 def zh_tw_song_share():
     conn = db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name)
     cur = conn.cursor()
-    form = SongForm()
+    form = zh_tw_SongForm()
     #  flask_wtf類中提供判斷是否表單提交過來的method，不需要自行利用request.method來做判斷
     if form.validate_on_submit():
         s_name = request.values.get('song_name')
