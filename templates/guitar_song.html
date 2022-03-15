@@ -48,21 +48,21 @@
         <div class="form-group">
           <div style="height: 80%">
             {{ form.song_name.label(style="font-weight: bold;") }}
-            {{ form.song_name(class="form-control", placeholder="請輸入欲分享的歌曲名稱") }}
+            {{ form.song_name(class="form-control", placeholder="Type the song you want to share") }}
           </div>
           <br>
           <div style="height: 80%">
             {{ form.author.label(style="font-weight: bold;") }}
-            {{ form.author(class="form-control", placeholder="請輸入該曲目的演奏者") }}
+            {{ form.author(class="form-control", placeholder="Who is the author of this song") }}
           </div>
           <br>
           <div class="desc_field">
             {{ form.desc.label(style="font-weight: bold;") }}
-            {{ form.desc(class="form-control", placeholder="具體描述如何使用這項資源", rows='7', style="background-color: #FFFFFF;") }}
+            {{ form.desc(class="form-control", placeholder="Provide some detailed imformation of this song", rows='7', style="background-color: #FFFFFF;") }}
           </div>
           <br>
           {{ form.url.label(style="font-weight: bold;") }}
-          {{ form.url(class="form-control", placeholder="參考的各項資料來源網址", rows='6') }}
+          {{ form.url(class="form-control", placeholder="Useful link of videos or images", rows='6') }}
           <br>
         </div>
       </div>      
