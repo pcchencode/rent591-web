@@ -36,97 +36,13 @@
     body.appendChild(link);
   }
 </script>
-<!-- <link id="slider_style" name="default" rel="stylesheet" type="text/css" href="static/styles/light_navbar.css"> -->
 
-
-
-<style>
-  /* dark mode navbar css */
-  /* @import url('static/styles/night_navbar.css'); */
-
-  /* light mode navbar css */
-  /* @import url('static/styles/light_navbar.css'); */
-/* .switch {
-  position: relative;
-  display: inline-block;
-  width: 90px;
-  height: 34px;
-}
-
-.switch input {display:none;}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #e7dada;
-  -webkit-transition: .4s;
-  transition: .4s;
-   border-radius: 34px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-  border-radius: 50%;
-}
-
-input:checked + .slider {
-  background-color: black;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(55px);
-}
-
-
-.slider:after
-{
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: "\f185";
-  color: rgb(244, 183, 36);
-  display: block;
-  position: absolute;
-  transform: translate(-50%,-50%);
-  top: 50%;
-  left: 70%;
-  font-size: 20px;
-}
-
-input:checked + .slider:after
-{  
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: "\f186";
-  left: 30%;
-  font-size: 20px;
-  color: rgb(83, 15, 83);
-} */
-</style>
 
 
 <body>
-
 <!-- Navbar here -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark" id="nav1">
-  <a class="navbar-brand" href="{{ url_for('home_page') }}"><i class="fas fa-home"> SongShare </i></a>
+  <a class="navbar-brand" href="{{ url_for('zh_tw_home_page') }}"><i class="fas fa-home"> SongShare </i></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
     <span class="navbar-toggler-icon">
       <i class="fas fa-bars" style="color:rgb(160, 153, 153); font-size:28px;"></i>
@@ -139,7 +55,7 @@ input:checked + .slider:after
         <a class="nav-link" href="{{ url_for('home_page') }}"> <i class="fas fa-home"> Home </i></a>
       </li> -->
       <li class="nav-item {{share_now_active}}">
-        <a class="nav-link" href="{{ url_for('song_share') }}"> <i class="fas fa-guitar"> 分享歌曲 </i></a>
+        <a class="nav-link" href="{{ url_for('zh_tw_song_share') }}"> <i class="fas fa-guitar"> 分享歌曲 </i></a>
       </li>
       <li class="nav-item {{search_active}}">
         <a class="nav-link" href="{{ url_for('query_song') }}"><i class="fas fa-search"> 立即搜尋 </i></a>
@@ -186,10 +102,10 @@ input:checked + .slider:after
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
           aria-expanded="false" style="outline:0;"> <i class="fa fa-globe"></i> </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="/zh_tw/home-page" class="sidebar-item-link"
-            data-placement="right">中文</a>
-          <a class="dropdown-item" href="/home-page" class="sidebar-item-link"
-            data-placement="right">English</a>
+          <a class="dropdown-item" class="sidebar-item-link" data-placement="right" id="tw_link">中文</a>
+          <a class="dropdown-item" class="sidebar-item-link" data-placement="right" id="eng_link">English</a>
+          <!-- <a class="dropdown-item" href="#" class="sidebar-item-link" data-placement="right"> <a id="test_link1"></a> </a>
+          <a class="dropdown-item" href="#" class="sidebar-item-link" data-placement="right"> <a id="test_link2"></a> </a> -->
         </div>
       </li>
       <label class="switch">
@@ -220,7 +136,6 @@ input:checked + .slider:after
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
   <script>
     var cssId = 'pagestyle';  // you could encode the css path itself to generate id..
     var mode_css = localStorage.getItem("Mode");
@@ -254,6 +169,22 @@ input:checked + .slider:after
       }
     }
   </script>
+
+  <script>
+    var a = document.getElementById('eng_link');
+    var b = document.getElementById('tw_link');
+    var curr_lang = window.location.pathname.substring(0, 6)
+    if (curr_lang == "/zh_tw") {
+      var eng_href = window.location.pathname.substring(6)
+      var tw_href = window.location.pathname
+    } else {
+      var eng_href = window.location.pathname
+      var tw_href = "/zh_tw" + window.location.pathname
+    }
+    a.href = eng_href
+    b.href = tw_href
+  </script>
+  
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

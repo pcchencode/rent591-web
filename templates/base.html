@@ -187,9 +187,8 @@ input:checked + .slider:after
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
           aria-expanded="false" style="outline:0;"> <i class="fa fa-globe"></i> </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="/zh_tw/home-page" class="sidebar-item-link" data-placement="right">中文</a>
-          <a class="dropdown-item" href="/home-page" class="sidebar-item-link" data-placement="right">English</a>
-          <a class="dropdown-item" href="/home-page" class="sidebar-item-link" data-placement="right">  </a>
+          <a id="tw_link" class="dropdown-item" class="sidebar-item-link" data-placement="right">中文</a>
+          <a id="eng_link" class="dropdown-item" class="sidebar-item-link" data-placement="right">English</a>
         </div>
       </li>
       <label class="switch">
@@ -269,6 +268,21 @@ input:checked + .slider:after
       //   localStorage.setItem(storageKey, "static/styles/light_navbar.css")
       // }
     }
+  </script>
+
+  <script>
+    var a = document.getElementById('eng_link');
+    var b = document.getElementById('tw_link');
+    var curr_lang = window.location.pathname.substring(0, 6)
+    if (curr_lang == "/zh_tw") {
+      var eng_href = window.location.pathname.substring(6)
+      var tw_href = window.location.pathname
+    } else {
+      var eng_href = window.location.pathname
+      var tw_href = "/zh_tw" + window.location.pathname
+    }
+    a.href = eng_href
+    b.href = tw_href
   </script>
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

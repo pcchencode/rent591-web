@@ -253,7 +253,13 @@ body, html {
 <script>
   var a = document.getElementById('test_link');
   // a.href = "https://www.google.com"
-  a.textContent = window.location.pathname
+  var lang = window.location.pathname.substring(0,6)
+  if (lang != "/zh_tw") {
+    var href = "/zh_tw/" +  window.location.pathname
+  }else {
+    var href = window.location.pathname
+  }
+  a.textContent = href
   // if path_name == "zh_tw":
   //   a.href = "/"
   // else:
