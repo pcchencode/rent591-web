@@ -125,11 +125,10 @@ border: 2px dashed #f69c55;
       <div class="col-md-4 col-md-offset-3", style="border:1px solid red;">
         <div class="form-group">
           <div class="wrap">
-            <div class="box-info" height:230px;">一鍵輸入你想知道的歌曲～</div>
+            <div class="box-info" height:230px;"> Enter your favorite song :) </div>
             <div class="search", style="border:1px solid red;">
-              <!-- <p class="box-info">一鍵輸入你想知道的歌曲～</p> -->
               {{ form.hidden_tag() }}
-              {{ form.query_name(class="form-control", placeholder="歌曲名稱") }}
+              {{ form.query_name(class="form-control", placeholder="Song Name") }}
               <button type=submit class="button"><i class="fas fa-search"></i></button>
             </div>
           </div>
@@ -142,7 +141,7 @@ border: 2px dashed #f69c55;
 <br>
 
 <div class="RecommendationList_container">
-  <h1> 熱門資源 </h1>
+  <h1> Hot Resources </h1>
 </div>
 
 

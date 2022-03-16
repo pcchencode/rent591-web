@@ -136,6 +136,28 @@ def query_song():
     else:
         return render_template('query_song.html', form=form, search_active='active')
 
+@app.route('/zh_tw/query-song', methods=['GET', 'POST'])
+def zh_tw_query_song():
+    conn = db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name)
+    cur = conn.cursor()
+    form = SearchForm()
+    if form.validate_on_submit():
+        q_name = request.values.get('query_name')
+        sql = f"""
+        SELECT `id`, `name`, `author`, `desc`, `url` FROM `guitar_song`
+        WHERE `name`= '{q_name}'
+        """
+        print(sql)
+        cur.execute(sql)
+        res = cur.fetchall() # 返回 tuple
+        conn.close()
+        if len(res)>0:
+            return render_template('/zh_tw/query_result.html', result=res, search_active='active', query_name=q_name)
+        else:
+            return render_template('/zh_tw/query_failed.html', search_active='active', query_name=q_name)
+    else:
+        return render_template('/zh_tw/query_song.html', form=form, search_active='active')
+
 @app.route('/css-test')
 def css_test():
     return render_template('css_test.html')
