@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends '/zh_tw/zh_tw_base.html' %}
 {% block title %}
 Submit Page
 {% endblock %}
@@ -140,7 +140,7 @@ Submit Page
       border-radius: 8px;
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
-      content: "\f106 \00a0 Less";
+      content: "\f106 \00a0 隱藏";
   }
   .accordion .card-header button.collapsed::after { /*::after偽元素*/
       background-color: #04AA6D;
@@ -156,7 +156,7 @@ Submit Page
       border-radius: 8px;
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
-      content: "\f107 \00a0 More ";
+      content: "\f107 \00a0 更多 ";
   }
 
   .accordion .card-header button:hover::after {
@@ -170,8 +170,14 @@ Submit Page
 </style>
 
 <center>
-  Here are the free resources of ：{{ query_name }} <br>
-  Happy Learning：）
+  您所搜尋的歌曲關鍵字為：{{ query_name }} <br>
+  以下為自學資源，自學愉快：）
+  <!-- result有兩筆以上，後續寫迴圈輸出結果 -->
+  <!-- {{result}} -->
+
+  <!-- {% for res in result %}
+    <li> {{res[0]}}  {{res[1]}} {{res[2]}}</li>
+  {% endfor %} -->
 </center>
 
 <center>
@@ -196,8 +202,8 @@ Submit Page
     
             <div id="collapseOne{{res[0]}}" class="collapse" aria-labelledby="headingOne">
               <div>
-                <br> Detailed Description: {{res[3]}}
-                <br> Reference Link： "https://www.youtube.com/embed/{{res[4][-11:]}}"
+                <br> 資源敘述: {{res[3]}}
+                <br> 參考連結： "https://www.youtube.com/embed/{{res[4][-11:]}}"
                 <br>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{res[4][-11:]}}"
                   title="YouTube video player" frameborder="0"

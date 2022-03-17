@@ -10,6 +10,15 @@ from wtforms.validators import DataRequired, Email
 class SongForm(FlaskForm):
     # username = StringField('UserName', validators=[DataRequired(message='Not Null')])
     # email = EmailField('Email', validators=[DataRequired(message='Not Null')])
+    song_name = StringField('Song Name*', validators=[DataRequired(message='Not Null')])
+    author = TextAreaField('Author*', validators=[DataRequired(message='Not Null')])
+    desc = TextAreaField('Description*', validators=[DataRequired(message='Not Null')])
+    url = TextAreaField('Ref Link*', validators=[DataRequired(message='Not Null')])
+    submit = SubmitField('Submit')
+
+class zh_tw_SongForm(FlaskForm):
+    # username = StringField('UserName', validators=[DataRequired(message='Not Null')])
+    # email = EmailField('Email', validators=[DataRequired(message='Not Null')])
     song_name = StringField('歌曲名稱*', validators=[DataRequired(message='Not Null')])
     author = TextAreaField('作者*', validators=[DataRequired(message='Not Null')])
     desc = TextAreaField('詳細描述*', validators=[DataRequired(message='Not Null')])

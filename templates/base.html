@@ -10,7 +10,8 @@
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
-
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  
   <link rel="icon" href="/static/guitar.ico" sizes="32x32">
 
     <title>
@@ -27,10 +28,10 @@
     link.id = cssId;
     link.rel = 'stylesheet';
     link.type = 'text/css';
-    if (mode_css == null || mode_css == "static/styles/light_navbar.css") {
-      link.href = "static/styles/pre_slider.css";
-    } else if (mode_css == "static/styles/night_navbar.css") {
-      link.href = "static/styles/post_slider.css";
+    if (mode_css == null || mode_css == "/static/styles/light_navbar.css") {
+      link.href = "/static/styles/pre_slider.css";
+    } else if (mode_css == "/static/styles/night_navbar.css") {
+      link.href = "/static/styles/post_slider.css";
     }
     // link.href = "static/styles/post_slider.css";
     body.appendChild(link);
@@ -182,6 +183,14 @@ input:checked + .slider:after
             data-placement="right">Separated link</a>
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+          aria-expanded="false" style="outline:0;"> <i class="fa fa-globe"></i> </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a id="tw_link" class="dropdown-item" class="sidebar-item-link" data-placement="right">中文</a>
+          <a id="eng_link" class="dropdown-item" class="sidebar-item-link" data-placement="right">English</a>
+        </div>
+      </li>
       <label class="switch">
         <input type="checkbox" onchange="swapStyleSheet()">
         <span class="slider round"></span>
@@ -228,7 +237,7 @@ input:checked + .slider:after
       if (mode_css != null){
         link.href = mode_css;
       }else {
-        link.href = "static/styles/light_navbar.css";
+        link.href = "/static/styles/light_navbar.css";
       }
       link.media = 'all';
       body.appendChild(link);
@@ -241,12 +250,12 @@ input:checked + .slider:after
       var foo = document.getElementById('pagestyle');
       var storageKey = "Mode";
       var mode_css = localStorage.getItem("Mode");
-      if (mode_css == "static/styles/light_navbar.css" || mode_css == null) {
-        foo.setAttribute('href', 'static/styles/night_navbar.css');
-        localStorage.setItem(storageKey, "static/styles/night_navbar.css");
-      } else if (mode_css == "static/styles/night_navbar.css") {
-        foo.setAttribute('href', 'static/styles/light_navbar.css');
-        localStorage.setItem(storageKey, "static/styles/light_navbar.css");
+      if (mode_css == "/static/styles/light_navbar.css" || mode_css == null) {
+        foo.setAttribute('href', '/static/styles/night_navbar.css');
+        localStorage.setItem(storageKey, "/static/styles/night_navbar.css");
+      } else if (mode_css == "/static/styles/night_navbar.css") {
+        foo.setAttribute('href', '/static/styles/light_navbar.css');
+        localStorage.setItem(storageKey, "/static/styles/light_navbar.css");
       }
 
       // if (foo.getAttribute('name') == "default") {
@@ -259,6 +268,21 @@ input:checked + .slider:after
       //   localStorage.setItem(storageKey, "static/styles/light_navbar.css")
       // }
     }
+  </script>
+
+  <script>
+    var a = document.getElementById('eng_link');
+    var b = document.getElementById('tw_link');
+    var curr_lang = window.location.pathname.substring(0, 6)
+    if (curr_lang == "/zh_tw") {
+      var eng_href = window.location.pathname.substring(6)
+      var tw_href = window.location.pathname
+    } else {
+      var eng_href = window.location.pathname
+      var tw_href = "/zh_tw" + window.location.pathname
+    }
+    a.href = eng_href
+    b.href = tw_href
   </script>
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

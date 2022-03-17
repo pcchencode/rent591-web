@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends '/zh/tw/zh_tw_base.html' %}
 {% block title %}
 Submit Page
 {% endblock %}
@@ -83,19 +83,19 @@ Submit Page
   <img src="static/submit_failed.png" width="200" height="200" />
   <br>
   <font size='7'>
-    <strong>No Result :(</strong>
+    <strong>沒有結果 :(</strong>
   </font>
   <br>
   <br>
-  <font color='#ADADAD'> No one has shared the song「{{ query_name }}」 </font>
+  <font color='#ADADAD'> 目前暫時無人分享歌曲「{{ query_name }}」 </font>
   <br>
   <br>
   <!-- Song Not Found :( <br> -->
   <!-- <input type="button" value="返回首頁" onclick="self.location.href='home-page'" />
   <input type="button" value="再搜索看看" onclick="self.location.href='query-song'" /> -->
-  <input class="button button1" type="button" value="home" style="margin-right:50px;"
+  <input class="button button1" type="button" value="返回首頁" style="margin-right:50px;"
     onclick="self.location.href='home-page'" />
-  <input class="button button2" type="button" value="Search Again" onclick="self.location.href='query-song'"/>
+  <input class="button button2" type="button" value="再搜索看看" onclick="self.location.href='query-song'"/>
 </div>
 
 

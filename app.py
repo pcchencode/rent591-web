@@ -9,7 +9,7 @@ import pymysql as db # pip install pymysql
 from flask import request
 from flask import jsonify
 from flask import render_template
-from view_form import SongForm, SearchForm
+from view_form import SongForm, zh_tw_SongForm, SearchForm
 from lib.conf import AWS_db_credential
 
 # credential imported from db_config.cfg
@@ -34,6 +34,10 @@ def index():
 def home_page():
     return render_template('home2.html', home_active='active')
 
+@app.route('/zh_tw/home-page')
+def zh_tw_home_page():
+    return render_template('/zh_tw/home2.html', home_active='active')
+
 @app.route('/market')
 def market_page():
     items = [
@@ -42,10 +46,6 @@ def market_page():
         {'id': 3, 'name': 'Keyboard', 'barcode': '231985128446', 'price': 150}
     ]
     return render_template('market.html', item_name='Phone', items=items)
-
-@app.route('/base2')
-def index_base2():
-    return render_template('base2.html')
 
 @app.route('/test2-aws')
 def index2():
@@ -84,6 +84,33 @@ def song_share():
     #  如果不是提交過來的表單，就是GET，這時候就回傳user.html網頁
     return render_template('guitar_song.html', form=form, share_now_active='active')
 
+@app.route('/zh_tw/song-share', methods=['GET', 'POST'])
+def zh_tw_song_share():
+    conn = db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name)
+    cur = conn.cursor()
+    form = zh_tw_SongForm()
+    #  flask_wtf類中提供判斷是否表單提交過來的method，不需要自行利用request.method來做判斷
+    if form.validate_on_submit():
+        s_name = request.values.get('song_name')
+        author = request.values.get('author')
+        desc = request.values.get('desc')
+        url = request.values.get('url')
+        sql = f"""
+        INSERT INTO guitar_song(`name`, `desc`, `url`) VALUES ('{s_name}', '{desc}', '{url}')
+        """
+        # print(sql)
+        try:
+            cur.execute(sql)
+            conn.commit()
+            return render_template('/zh_tw/submit_success.html', s_name=s_name, share_now_active='active')
+        except Exception as e:
+            conn.rollback()
+            print(e)
+            return render_template('/zh_tw/submit_failed.html', err=e, share_now_active='active')
+        # return f'Success Submit {s_name} {desc} {url}'
+    #  如果不是提交過來的表單，就是GET，這時候就回傳user.html網頁
+    return render_template('/zh_tw/guitar_song.html', form=form, share_now_active='active')
+
 
 @app.route('/query-song', methods=['GET', 'POST'])
 def query_song():
@@ -108,6 +135,28 @@ def query_song():
             return render_template('query_failed.html', search_active='active', query_name=q_name)
     else:
         return render_template('query_song.html', form=form, search_active='active')
+
+@app.route('/zh_tw/query-song', methods=['GET', 'POST'])
+def zh_tw_query_song():
+    conn = db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name)
+    cur = conn.cursor()
+    form = SearchForm()
+    if form.validate_on_submit():
+        q_name = request.values.get('query_name')
+        sql = f"""
+        SELECT `id`, `name`, `author`, `desc`, `url` FROM `guitar_song`
+        WHERE `name`= '{q_name}'
+        """
+        print(sql)
+        cur.execute(sql)
+        res = cur.fetchall() # 返回 tuple
+        conn.close()
+        if len(res)>0:
+            return render_template('/zh_tw/query_result.html', result=res, search_active='active', query_name=q_name)
+        else:
+            return render_template('/zh_tw/query_failed.html', search_active='active', query_name=q_name)
+    else:
+        return render_template('/zh_tw/query_song.html', form=form, search_active='active')
 
 @app.route('/css-test')
 def css_test():
