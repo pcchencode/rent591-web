@@ -140,7 +140,7 @@ Submit Page
       border-radius: 8px;
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
-      content: "\f106 \00a0 隱藏";
+      content: "\f106 \00a0 Less";
   }
   .accordion .card-header button.collapsed::after { /*::after偽元素*/
       background-color: #04AA6D;
@@ -156,7 +156,7 @@ Submit Page
       border-radius: 8px;
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
-      content: "\f107 \00a0 更多 ";
+      content: "\f107 \00a0 More ";
   }
 
   .accordion .card-header button:hover::after {
@@ -196,8 +196,8 @@ Submit Page
     
             <div id="collapseOne{{res[0]}}" class="collapse" aria-labelledby="headingOne">
               <div>
-                <br> 資源敘述: {{res[3]}}
-                <br> 參考連結： "https://www.youtube.com/embed/{{res[4][-11:]}}"
+                <br> Detailed Description: {{res[3]}}
+                <br> Reference Link： "https://www.youtube.com/embed/{{res[4][-11:]}}"
                 <br>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{res[4][-11:]}}"
                   title="YouTube video player" frameborder="0"
