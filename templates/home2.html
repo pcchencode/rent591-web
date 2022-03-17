@@ -245,11 +245,9 @@ body, html {
     </div>
   </div> -->
 </div>
+
+<!-- 透過js塞入標籤
 <a id="test_link"></a>
-
-<script type="text/javascript" src="static/js/accordion.js">
-</script>
-
 <script>
   var a = document.getElementById('test_link');
   // a.href = "https://www.google.com"
@@ -262,11 +260,13 @@ body, html {
     var tw_href = "/zh_tw" + window.location.pathname
   }
   a.textContent = eng_href 
-  // if path_name == "zh_tw":
-  //   a.href = "/"
-  // else:
-  //   a.href += "zh_tw"
+</script> -->
+
+
+<script type="text/javascript" src="static/js/accordion.js">
 </script>
+
+
 
 <div class="empty-block">
 <br>
