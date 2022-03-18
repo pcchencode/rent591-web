@@ -10,24 +10,25 @@
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
+  top: 6px;
+  left: 9px;
   right: 0;
   bottom: 0;
-  
+  height: 26px;
+  width: 70px;
   background-color: black;
   -webkit-transition: .4s;
   transition: .4s;
-   border-radius: 34px;
+  border-radius: 34px;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 58px;
-  bottom: 4px;
+  height: 20px;
+  width: 20px;
+  left: 45px;
+  bottom: 3.5px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
@@ -46,7 +47,7 @@ input:focus + .slider {
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
-  transform: translateX(-54px);
+  transform: translateX(-40px);
 }
 
 /*------ ADDED CSS ---------*/
