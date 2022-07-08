@@ -1,3 +1,6 @@
+/alembic/__pycache__
 lib/__pycache__
 .vscode
 __pycache__
+
+.env
