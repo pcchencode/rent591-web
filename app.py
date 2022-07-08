@@ -189,4 +189,5 @@ if __name__ == '__main__':
     app.config['SECRET_KEY']='your key' #這是因為flask_wtf預設需要設置密碼，也是為了避免一開始所說的CSRF攻擊。
     # app.run(debug=True)
     # app.run(host="0.0.0.0", port=8001)
+    # 本地測試環境 python3 app.py
     app.run(host="0.0.0.0", port=80, debug=True) # to any port#
