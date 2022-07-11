@@ -69,7 +69,7 @@ def song_share():
         desc = request.values.get('desc')
         url = request.values.get('url')
         sql = f"""
-        INSERT INTO guitar_song(`name`, `desc`, `url`) VALUES ('{s_name}', '{desc}', '{url}')
+        INSERT INTO guitar_song(`name`, `author`, `desc`, `url`) VALUES ('{s_name}', '{author}','{desc}', '{url}')
         """
         # print(sql)
         try:
