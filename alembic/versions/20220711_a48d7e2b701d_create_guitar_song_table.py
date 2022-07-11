@@ -1,17 +1,16 @@
-"""Add Table guitar_cong
+"""create guitar-song table
 
-Revision ID: 1483fcb91e8e
+Revision ID: a48d7e2b701d
 Revises: 
-Create Date: 2022-07-11 13:14:30.618341
+Create Date: 2022-07-11 15:21:11.695667
 
 """
 from alembic import op
 import sqlalchemy as sa
-from datetime import datetime
 
 
 # revision identifiers, used by Alembic.
-revision = '1483fcb91e8e'
+revision = 'a48d7e2b701d'
 down_revision = None
 branch_labels = None
 depends_on = None
