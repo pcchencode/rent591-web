@@ -191,7 +191,7 @@ def register():
     # print(request.values.get('UserName'))
     print(form.validate_on_submit())
     if form.validate_on_submit():
-        print(request.values.get('UserName'))
+        print(request.values.get('username'))
         return 'Success Thank You'
     return render_template('register.html', form=form)
 
