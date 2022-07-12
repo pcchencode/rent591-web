@@ -9,7 +9,8 @@ import pymysql as db # pip install pymysql
 from flask import request
 from flask import jsonify
 from flask import render_template
-from view_form import SongForm, zh_tw_SongForm, SearchForm
+from view_form import SongForm, zh_tw_SongForm, SearchForm, FormRegister
+# from form import FormRegister
 from lib.conf import AWS_db_credential
 
 # credential imported from db_config.cfg
@@ -19,7 +20,7 @@ user_name = aws_db_conf.user_name
 password = aws_db_conf.password
 port = aws_db_conf.port
 db_name = aws_db_conf.db_name
-print(host_name, user_name, password, port, db_name)
+# print(host_name, user_name, password, port, db_name)
 
 
 app = Flask(__name__)
@@ -183,6 +184,16 @@ def hover():
 @app.route('/card-accordion')
 def card():
     return render_template('card_accordion.html')
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form =FormRegister()
+    # print(request.values.get('UserName'))
+    print(form.validate_on_submit())
+    if form.validate_on_submit():
+        print(request.values.get('UserName'))
+        return 'Success Thank You'
+    return render_template('register.html', form=form)
 
 
 if __name__ == '__main__':
