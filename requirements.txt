@@ -6,4 +6,5 @@ gunicorn
 gevent
 Werkzeug==2.0.0
 jinja2==3.0.3
+WTForms==2.3.3
 Flask-Login==0.4.1
