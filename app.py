@@ -268,7 +268,7 @@ def register():
     if form.validate_on_submit():
         username = request.values.get('username')
         email = request.values.get('email')
-        pw = request.values.get('username')
+        pw = request.values.get('password')
         with db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name) as conn:
             with conn.cursor() as cur:
                 check_sql = f"""
