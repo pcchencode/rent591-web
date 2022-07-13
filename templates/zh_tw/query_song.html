@@ -143,7 +143,14 @@ border: 2px dashed #f69c55;
 
 <div class="RecommendationList_container">
   <h1> 熱門資源 </h1>
-  <h4> 敬請期待:)  </h4>
+  {% if current_user.is_authenticated %}
+  <!-- 登入後才可見到的 -->
+    <h4> 敬請期待:) </h4>
+  {% else %}
+  <!-- 否則就看到 -->
+    <h4> 登入以查看 </h4>
+  {% endif %}
+  
 </div>
 
 
