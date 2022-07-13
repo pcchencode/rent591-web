@@ -188,11 +188,25 @@ def card():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form =FormRegister()
-    # print(request.values.get('UserName'))
     print(form.validate_on_submit())
     if form.validate_on_submit():
-        print(request.values.get('username'))
-        return 'Success Thank You'
+        username = request.values.get('username')
+        email = request.values.get('email')
+        pw = request.values.get('username')
+        with db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name) as conn:
+            with conn.cursor() as cur:
+                sql = f"""
+                INSERT INTO user_account(`username`, `email`, `password`) VALUES ('{username}', '{email}', '{pw}')
+                """ 
+                try:
+                    cur.execute(sql)
+                    conn.commit()
+                    return "Success Thank You"
+                except Exception as e:
+                    conn.rollback()
+                    print(e)
+                    return "Opps! something goes wrong"
+
     return render_template('register.html', form=form)
 
 
