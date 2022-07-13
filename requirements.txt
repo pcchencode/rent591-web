@@ -4,4 +4,6 @@ pymysql==1.0.2
 flask_wtf==0.15.1
 gunicorn
 gevent
+Werkzeug==2.0.0
+jinja2==3.0.3
 Flask-Login==0.4.1
