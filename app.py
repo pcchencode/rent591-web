@@ -271,6 +271,13 @@ def register():
         pw = request.values.get('username')
         with db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name) as conn:
             with conn.cursor() as cur:
+                check_sql = f"""
+                select * from user_account where username = '{username}'
+                """
+                cur.execute(check_sql); row = cur.fetchone()
+                if row:
+                    return "This account is already registered!!"
+                
                 sql = f"""
                 INSERT INTO user_account(`username`, `email`, `password`) VALUES ('{username}', '{email}', '{pw}')
                 """ 
