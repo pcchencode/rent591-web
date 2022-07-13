@@ -142,7 +142,14 @@ text-align: center;
 
 <div class="RecommendationList_container">
   <h1> Hot Resources </h1>
-  <h4> coming soon:) </h4>
+  {% if current_user.is_authenticated %}
+  <!-- 登入後才可見到的 -->
+  <h4> comming soon:) </h4>
+  {% else %}
+  <!-- 否則就看到 -->
+  <h4> <a href="{{ url_for('login') }}">login</a> to check </h4>
+  {% endif %}
+
 </div>
 
 

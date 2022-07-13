@@ -2,13 +2,14 @@
 # -*- coding: utf-8 -*- 
 
 import os
-from flask import Flask
+from flask import Flask, flash, redirect, url_for
 # from flask_pymongo import PyMongo # pip install flask_pymongo
 import pymysql as db # pip install pymysql
 # from flask_sqlalchemy import SQLAlchemy
 from flask import request
 from flask import jsonify
 from flask import render_template
+from flask_login import LoginManager, login_user, logout_user, current_user, login_required, UserMixin
 from view_form import SongForm, zh_tw_SongForm, SearchForm, FormRegister
 # from form import FormRegister
 from lib.conf import AWS_db_credential
@@ -22,10 +23,85 @@ port = aws_db_conf.port
 db_name = aws_db_conf.db_name
 # print(host_name, user_name, password, port, db_name)
 
-
 app = Flask(__name__)
 app.config['SECRET_KEY']='your key' #這是因為flask_wtf預設需要設置密碼，也是為了避免一開始所說的CSRF攻擊。
 # lhc = db.connect(host='127.0.0.1', user='root', password='')
+
+login_manager = LoginManager()
+login_manager.login_view = 'login'
+login_manager.login_message_category = 'info'
+login_manager.login_message = '請登錄'
+login_manager.init_app(app)
+
+
+class User(UserMixin):
+    pass
+# users = [
+#     {'id':'Tom', 'username': 'Tom', 'password': '111111'},
+#     {'id':'Michael', 'username': 'Michael', 'password': '123456'}
+# ]
+
+def query_user(user_id):
+    with db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name) as conn:
+        with conn.cursor() as cur:    
+            sql = f"""
+            select username, password from user_account where username = '{user_id}'
+            """
+            cur.execute(sql); res = cur.fetchone()
+            print(res)
+            if res:
+                user = {'id': res[0], 'password': res[1]}
+                print(user)
+                return user
+    # for user in users:
+    #     if user_id == user['id']:
+            # return user
+
+@login_manager.user_loader
+def load_user(user_id):
+    if query_user(user_id) is not None:
+        curr_user = User()
+        curr_user.id = user_id
+        return curr_user
+
+@app.route('/index_login')
+@login_required
+def index_login():
+    return 'Logged in as: %s' % current_user.get_id()
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        user_id = request.form.get('userid')
+        user = query_user(user_id)
+        if user is not None and request.form['password'] == user['password']:
+
+            curr_user = User()
+            curr_user.id = user_id
+
+            # 通过Flask-Login的login_user方法登录用户
+            login_user(curr_user)
+
+            return redirect(url_for('index_login'))
+
+        flash('Wrong username or password!')
+
+    # GET 请求
+    return render_template('login.html')
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return 'Logged out successfully!'
+
+@app.route('/login_test')
+def login_test():
+    return render_template('login_test.html')
+
+
 
 @app.route('/')
 def index():
@@ -188,11 +264,32 @@ def card():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form =FormRegister()
-    # print(request.values.get('UserName'))
     print(form.validate_on_submit())
     if form.validate_on_submit():
-        print(request.values.get('username'))
-        return 'Success Thank You'
+        username = request.values.get('username')
+        email = request.values.get('email')
+        pw = request.values.get('username')
+        with db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name) as conn:
+            with conn.cursor() as cur:
+                check_sql = f"""
+                select * from user_account where username = '{username}'
+                """
+                cur.execute(check_sql); row = cur.fetchone()
+                if row:
+                    return "This account is already registered!!"
+                
+                sql = f"""
+                INSERT INTO user_account(`username`, `email`, `password`) VALUES ('{username}', '{email}', '{pw}')
+                """ 
+                try:
+                    cur.execute(sql)
+                    conn.commit()
+                    return "Success Thank You"
+                except Exception as e:
+                    conn.rollback()
+                    print(e)
+                    return "Opps! something goes wrong"
+
     return render_template('register.html', form=form)
 
 

@@ -39,7 +39,7 @@ class FormRegister(FlaskForm):
     """
     username = StringField('UserName', validators=[
         validators.DataRequired(),
-        validators.Length(min=10, max=30, message='UserName should be between 10 and 30 charc')
+        validators.Length(min=5, max=30, message='UserName should be between 5 and 30 charc')
     ])
     email = EmailField('Email', validators=[
         validators.DataRequired(),
