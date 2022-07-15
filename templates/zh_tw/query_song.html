@@ -84,7 +84,7 @@ height: 230px;
 display: grid;
 align-content: end;
 text-align: center;
-border: 2px dashed #f69c55;
+/* border: 2px dashed #f69c55; */
 }
 
 .wrap {
@@ -122,11 +122,11 @@ border: 2px dashed #f69c55;
 <form action="{{ url_for('zh_tw_query_song') }}" , method="post">
   <div class="container-fluid">
     <div class="row align-items-center justify-content-center">
-      <div class="col-md-4 col-md-offset-3", style="border:1px solid red;">
+      <div class="col-md-4 col-md-offset-3">
         <div class="form-group">
           <div class="wrap">
             <div class="box-info" height:230px;">一鍵輸入你想知道的歌曲～</div>
-            <div class="search", style="border:1px solid red;">
+            <div class="search">
               <!-- <p class="box-info">一鍵輸入你想知道的歌曲～</p> -->
               {{ form.hidden_tag() }}
               {{ form.query_name(class="form-control", placeholder="歌曲名稱") }}
