@@ -11,6 +11,7 @@ from flask import jsonify
 from flask import render_template
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required, UserMixin
 from view_form import SongForm, zh_tw_SongForm, SearchForm, FormRegister
+from flask_bcrypt import Bcrypt
 # from form import FormRegister
 from lib.conf import AWS_db_credential
 
@@ -75,7 +76,9 @@ def login():
     if request.method == 'POST':
         user_id = request.form.get('userid')
         user = query_user(user_id)
-        if user is not None and request.form['password'] == user['password']:
+        pw_hash = user['password']
+        
+        if user is not None and Bcrypt().check_password_hash(pw_hash, request.form['password'])==True:
 
             curr_user = User()
             curr_user.id = user_id
@@ -273,6 +276,7 @@ def register():
         username = request.values.get('username')
         email = request.values.get('email')
         pw = request.values.get('password')
+        pw_hash = Bcrypt().generate_password_hash(password=pw).decode('utf8')
         with db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name) as conn:
             with conn.cursor() as cur:
                 check_sql = f"""
@@ -283,7 +287,7 @@ def register():
                     return "This account is already registered!!"
                 
                 sql = f"""
-                INSERT INTO user_account(`username`, `email`, `password`) VALUES ('{username}', '{email}', '{pw}')
+                INSERT INTO user_account(`username`, `email`, `password`) VALUES ('{username}', '{email}', '{pw_hash}')
                 """ 
                 try:
                     cur.execute(sql)
