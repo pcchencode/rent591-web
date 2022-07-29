@@ -86,7 +86,7 @@ def login():
             # 通过Flask-Login的login_user方法登录用户
             login_user(curr_user)
 
-            return redirect(url_for('index_login'))
+            return render_template('home2.html', home_active='active')
 
         flash('Wrong username or password!')
 
@@ -98,7 +98,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return 'Logged out successfully!'
+    return render_template('home2.html', home_active='active')
 
 @app.route('/login_test')
 def login_test():
