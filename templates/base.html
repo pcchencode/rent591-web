@@ -156,7 +156,7 @@ input:checked + .slider:after
       {% if current_user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('logout') }}" data-toggle="tooltip" title="Not yet available">
-            <i class="fas fa-sign-in-alt"> Logout </i>
+            <i class="fas fa-sign-in-alt"> Logout({{current_user.id}}) </i>
           </a>
         </li>
 
