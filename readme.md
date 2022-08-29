@@ -18,7 +18,19 @@
 * AWS RDS as a MySQL service
 * Implemented CI/CD process via Jenkins srver(on VM) and Github Actions
 
-### Running on Local
-```
-docker run 
-```
+### 🧑🏻‍💻 Run on your local machine and see the web interface
+1. Build image(may take a while)
+    ```linux
+    $ docker build -t app_img .
+    ```
+
+2. Docker run container and bind the port:80
+    ```linux
+    docker run -p 80:80 app_img 
+    ```
+
+3. Click on http://0.0.0.0:80, there you go:)
+
+### Feature Updated
+* v1.0
+* v2.0
