@@ -12,11 +12,11 @@
 * Frontend: **HTML**, **CSS**, **Javascript**, **JQuery**
 
 ### 🧰 Used Tools:
-* Google Kubernetes Engine as a Production Environment
-* Google Cloud Compute Engine as a virtual machine
-* Google Container Registry as a sotrage of built docker images
-* AWS RDS as a MySQL service
-* Implemented CI/CD process via Jenkins srver(on VM) and Github Actions
+* <a href="https://cloud.google.com/kubernetes-engine"><img alt="GitHub Actions" src="https://img.shields.io/badge/Google%20Kubernetes%20Engine-0078d7.svg?logo=Kubernetes&logoColor=white"></a> as a Production Environment
+* <a href="https://cloud.google.com/products/compute"><img alt="GitHub Actions" src="https://img.shields.io/badge/GCP%20compute%20engine-0078d7.svg?logo=Amazon%20EC2&logoColor=white"></a> as a virtual machine
+* <a href="https://cloud.google.com/container-registry"><img alt="GitHub Actions" src="https://img.shields.io/badge/Google%20Container%20Registry-0078d7.svg?logo=Docs.rs&logoColor=white"></a>  as a sotrage of built docker images
+* <a href="https://aws.amazon.com/rds/"><img alt="GitHub Actions" src="https://img.shields.io/badge/Amazon%20RDS-F37626.svg?logo=Amazon%20RDS&logoColor=white"></a> as a MySQL service
+* Implemented CI/CD process via <a href="https://www.jenkins.io/"><img alt="Jenkins" src="https://img.shields.io/badge/Jenkins-800000.svg?logo=Jenkins&logoColor=white"></a> and <a href="https://github.com/features/actions"><img alt="GitHub Actions" src="https://img.shields.io/badge/GitHub%20Actions-010101.svg?logo=github%20actions&logoColor=white"></a>
 
 ### 🧑🏻‍💻 Run on your local machine to see👀 the web interface
 1. Build image(may take a while)
