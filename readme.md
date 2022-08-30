@@ -29,7 +29,7 @@
     $ docker run -p 80:80 app_img 
     ```
 
-3. Click on http://0.0.0.0:80, there you go:)
+3. Click on http://0.0.0.0:80, then there you go : )
 [![截圖 2022-08-30 上午11.13.39](https://i.im.ge/2022/08/30/OybAfM.2022-08-30-11-13-39.png)](https://im.ge/i/OybAfM)
 
 
