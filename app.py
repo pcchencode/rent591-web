@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*- 
 
 import os
+from unicodedata import category
 from flask import Flask, flash, redirect, url_for
 # from flask_pymongo import PyMongo # pip install flask_pymongo
 import pymysql as db # pip install pymysql
@@ -53,7 +54,9 @@ def query_user(user_id):
             if res:
                 user = {'id': res[0], 'password': res[1]}
                 print(user)
-                return user
+            else:
+                user = None
+            return user
     # for user in users:
     #     if user_id == user['id']:
             # return user
@@ -71,27 +74,7 @@ def index_login():
     return 'Logged in as: %s' % current_user.get_id()
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        user_id = request.form.get('userid')
-        user = query_user(user_id)
-        pw_hash = user['password']
-        
-        if user is not None and Bcrypt().check_password_hash(pw_hash, request.form['password'])==True:
 
-            curr_user = User()
-            curr_user.id = user_id
-
-            # 通过Flask-Login的login_user方法登录用户
-            login_user(curr_user)
-
-            return render_template('home2.html', home_active='active')
-
-        flash('Wrong username or password!')
-
-    # GET 请求
-    return render_template('login.html')
 
 
 @app.route('/logout')
@@ -268,6 +251,31 @@ def hover():
 def card():
     return render_template('card_accordion.html')
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        user_id = request.form.get('userid')
+        user = query_user(user_id)
+        if not user:
+            flash('username does not exist', category='danger')
+        else:
+            pw_hash = user['password']
+            
+            if user is not None and Bcrypt().check_password_hash(pw_hash, request.form['password'])==True:
+
+                curr_user = User()
+                curr_user.id = user_id
+
+                # 通过Flask-Login的login_user方法登录用户
+                login_user(curr_user)
+
+                return render_template('home2.html', home_active='active')
+
+        flash('Wrong username or password!')
+
+    # GET 请求
+    return render_template('login.html')
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form =FormRegister()
@@ -284,19 +292,19 @@ def register():
                 """
                 cur.execute(check_sql); row = cur.fetchone()
                 if row:
-                    return "This account is already registered!!"
-                
-                sql = f"""
-                INSERT INTO user_account(`username`, `email`, `password`) VALUES ('{username}', '{email}', '{pw_hash}')
-                """ 
-                try:
-                    cur.execute(sql)
-                    conn.commit()
-                    return "Success Thank You"
-                except Exception as e:
-                    conn.rollback()
-                    print(e)
-                    return "Opps! something goes wrong"
+                    flash("This account is already registered!!", category='danger')
+                else:
+                    sql = f"""
+                    INSERT INTO user_account(`username`, `email`, `password`) VALUES ('{username}', '{email}', '{pw_hash}')
+                    """ 
+                    try:
+                        cur.execute(sql)
+                        conn.commit()
+                        return "Success Thank You"
+                    except Exception as e:
+                        conn.rollback()
+                        print(e)
+                        return "Opps! something goes wrong"
 
     return render_template('register.html', form=form)
 
