@@ -1,3 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}
+Login
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,10 +22,15 @@
     <div>{{ messages[0] }}</div>
     {% endwith %}
     <form action="{{ url_for('login') }}" method="POST">
-        <input type="text" name="userid" id="userid" placeholder="用戶ID"></input>
-        <input type="password" name="password" id="password" placeholder="密碼"></input>
-        <input type="submit" name="submit"></input>
+        <input type="text" name="userid" id="userid" placeholder="Account ID"></input>
+        <input type="password" name="password" id="password" placeholder="Password"></input>
+        <input type="submit" name="submit" value="Login"></input>
     </form>
 </body>
 
 </html>
+
+{% endblock %}
+
+
+

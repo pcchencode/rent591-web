@@ -9,8 +9,12 @@ Register Now
 {% block nav %}
 {% endblock %}
 
+
 {% block content %}
 <br>
+{% with messages = get_flashed_messages() %}
+<div style="color:red;">{{ messages[0] }}</div>
+{% endwith %}
 <form method="POST" action="{{ url_for('register') }}">
     {% if form.errors %}
     <div class="alert alert-danger">
