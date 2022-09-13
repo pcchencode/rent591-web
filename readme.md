@@ -1,7 +1,7 @@
 ## SongShare Free Learning Resources Wep App v2
 ### 💡 Main Idea: 
 * A Platform sharing free learning resources, such as instruments, programming languages or other materials.
-* website: [PRODUCTION](http://34.136.34.40/home-page)
+* website: [PRODUCTION](http://websongsshare.ml/home-page)
 * website: [TEST](http://35.201.217.195/home-page)
 
 
