@@ -19,11 +19,11 @@
 * Implemented CI/CD process via <a href="https://www.jenkins.io/"><img alt="Jenkins" src="https://img.shields.io/badge/Jenkins-800000.svg?logo=Jenkins&logoColor=white"></a> and <a href="https://github.com/features/actions"><img alt="GitHub Actions" src="https://img.shields.io/badge/GitHub%20Actions-010101.svg?logo=github%20actions&logoColor=white"></a>
 
 ### 🧱 Infractructure
-* Web Services
-    ![image](https://github.com/pcchencode/web-song-share/blob/master/static/infra1.PNG)
+#### Web Services
+![image](https://github.com/pcchencode/web-song-share/blob/master/static/infra1.PNG)
 
-* CI/CD
-    ![image](https://github.com/pcchencode/web-song-share/blob/master/static/infra2.PNG)
+#### CI/CD
+![image](https://github.com/pcchencode/web-song-share/blob/master/static/infra2.PNG)
 
 ### 🧑🏻‍💻 Run on your local machine to see👀 the web interface
 1. Build image(may take a while)
