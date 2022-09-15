@@ -20,8 +20,10 @@
 
 ### 🧱 Infractructure
 * Web Services
+    ![image](https://github.com/pcchencode/web-song-share/blob/master/static/infra1.PNG)
 
 * CI/CD
+    ![image](https://github.com/pcchencode/web-song-share/blob/master/static/infra2.PNG)
 
 ### 🧑🏻‍💻 Run on your local machine to see👀 the web interface
 1. Build image(may take a while)
