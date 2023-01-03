@@ -257,7 +257,8 @@ def login():
         user_id = request.form.get('userid')
         user = query_user(user_id)
         if not user:
-            flash('username does not exist', category='danger')
+            return render_template('login.html', home_active='active', err=True)
+            # flash('username does not exist', category='danger')
         else:
             pw_hash = user['password']
             
@@ -270,8 +271,10 @@ def login():
                 login_user(curr_user)
 
                 return render_template('home2.html', home_active='active')
+            else:
+                return render_template('login.html', home_active='active', err=True)
 
-        flash('Wrong username or password!')
+        # flash('Wrong username or password!')
 
     # GET 请求
     return render_template('login.html')
