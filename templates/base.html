@@ -268,11 +268,15 @@ input:checked + .slider:after
       var mode_css = localStorage.getItem("Mode");
       if (mode_css == "/static/styles/light_navbar.css" || mode_css == null) {
         foo.setAttribute('href', '/static/styles/night_navbar.css');
-        foo_login.setAttribute('href', '/static/styles/night_login.css');
+        if (foo_login) {
+          foo_login.setAttribute('href', '/static/styles/night_login.css');
+        }
         localStorage.setItem(storageKey, "/static/styles/night_navbar.css");
       } else if (mode_css == "/static/styles/night_navbar.css") {
         foo.setAttribute('href', '/static/styles/light_navbar.css');
-        foo_login.setAttribute('href', '/static/styles/light_login.css');
+        if (foo_login) {
+          foo_login.setAttribute('href', '/static/styles/light_login.css');
+        }
         localStorage.setItem(storageKey, "/static/styles/light_navbar.css");
       }
 
