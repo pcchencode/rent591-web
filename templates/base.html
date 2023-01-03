@@ -264,6 +264,7 @@ input:checked + .slider:after
     function swapStyleSheet() {
       var foo = document.getElementById('pagestyle');
       var foo_login = document.getElementById('login_form');
+      var foo_share = document.getElementById('share_form');
       var storageKey = "Mode";
       var mode_css = localStorage.getItem("Mode");
       if (mode_css == "/static/styles/light_navbar.css" || mode_css == null) {
@@ -271,11 +272,17 @@ input:checked + .slider:after
         if (foo_login) {
           foo_login.setAttribute('href', '/static/styles/night_login.css');
         }
+        if (foo_share) {
+          foo_share.setAttribute('href', '/static/styles/night_share_form.css');
+        }
         localStorage.setItem(storageKey, "/static/styles/night_navbar.css");
       } else if (mode_css == "/static/styles/night_navbar.css") {
         foo.setAttribute('href', '/static/styles/light_navbar.css');
         if (foo_login) {
           foo_login.setAttribute('href', '/static/styles/light_login.css');
+        }
+        if (foo_share) {
+          foo_share.setAttribute('href', '/static/styles/light_share_form.css');
         }
         localStorage.setItem(storageKey, "/static/styles/light_navbar.css");
       }
