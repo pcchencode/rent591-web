@@ -29,19 +29,20 @@ Login
         align-items: center;
     }
 
-    .login {
+
+    /* .login {
         width: 300px;
         height: 400px;
         padding: 20px;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgba(254, 252, 252, 0.6);
         border-radius: 20px;
-        border: 2px solid #fff;
+        border: 2px solid hwb(0 7% 93%);
         box-shadow: 0 0 30px #000;
         backdrop-filter: blur(10px);
         display: flex;
         justify-content: center;
         align-items: center;
-    }
+    } */
 
     h2 {
         color: #fff;
@@ -118,7 +119,7 @@ Login
 </style>
 
 <!DOCTYPE html>
-<div class="login">
+<div id="login" class="login">
     <form class="form" action="{{ url_for('login') }}" method="POST">
         <h2>Login</h2>
         {% if err %}
@@ -143,4 +144,16 @@ Login
     </form>
 </div>
 
+<!-- 初始化 -->
+<script>
+    var mode_css = localStorage.getItem("Mode");
+    if (mode_css == "/static/styles/light_navbar.css") {
+        document.write('<link id="login_form" rel="stylesheet" type="text/css" href="/static/styles/light_login.css">');
+    } else if (mode_css == "/static/styles/night_navbar.css") {
+        document.write('<link id="login_form" rel="stylesheet" type="text/css" href="/static/styles/night_login.css">');
+    }
+</script>
+<!-- 以下兩個要切換 -->
+<!-- <link id="login" rel="stylesheet" type="text/css" href="/static/styles/night_login.css"> -->
+<!-- <link id="login" rel="stylesheet" type="text/css" href="/static/styles/light_login.css"> -->
 {% endblock %}
