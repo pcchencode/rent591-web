@@ -279,6 +279,34 @@ def login():
     # GET 请求
     return render_template('login.html')
 
+@app.route('/zh_tw/login', methods=['GET', 'POST'])
+def login_tw():
+    if request.method == 'POST':
+        user_id = request.form.get('userid')
+        user = query_user(user_id)
+        if not user:
+            return render_template('/zh_tw/login.html', home_active='active', err=True, default_acct=user_id)
+            # flash('username does not exist', category='danger')
+        else:
+            pw_hash = user['password']
+            
+            if user is not None and Bcrypt().check_password_hash(pw_hash, request.form['password'])==True:
+
+                curr_user = User()
+                curr_user.id = user_id
+
+                # 通过Flask-Login的login_user方法登录用户
+                login_user(curr_user)
+
+                return render_template('/zh_tw/home2.html', home_active='active')
+            else:
+                return render_template('/zh_tw/login.html', home_active='active', err=True, default_acct=user_id)
+
+        # flash('Wrong username or password!')
+
+    # GET 请求
+    return render_template('/zh_tw/login.html')
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form =FormRegister()
