@@ -19,11 +19,11 @@
   </form> -->
 
 <style>
-  .form-group {
+  /* .form-group {
     border-radius: 20px;
     background: #f3efef;
     padding: 30px;
-  }
+  } */
 
   .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
               color: #D3D3D3;
@@ -73,4 +73,17 @@
           </center>
 </form>
 <br>
+
+<!-- 初始化 -->
+<script>
+  var mode_css = localStorage.getItem("Mode");
+  if (mode_css == "/static/styles/light_navbar.css") {
+    document.write('<link id="share_form" rel="stylesheet" type="text/css" href="/static/styles/light_share_form.css">');
+  } else if (mode_css == "/static/styles/night_navbar.css") {
+    document.write('<link id="share_form" rel="stylesheet" type="text/css" href="/static/styles/night_share_form.css">');
+  }
+</script>
+<!-- 以下兩個要切換 -->
+<!-- <link id="share_form" rel="stylesheet" type="text/css" href="/static/styles/night_share_form.css"> -->
+<!-- <link id="share_form" rel="stylesheet" type="text/css" href="/static/styles/light_share_form.css"> -->
 {% endblock %}

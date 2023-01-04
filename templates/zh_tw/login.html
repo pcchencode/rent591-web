@@ -1,0 +1,159 @@
+{% extends '/zh_tw/zh_tw_base.html' %}
+{% block title %}
+Login
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+
+{% block content %}
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        box-sizing: border-box;
+        font-family: "Noto Sans TC", sans-serif;
+        background: url("../static/bg1.jpg") no-repeat center center / cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    /* .login {
+        width: 300px;
+        height: 400px;
+        padding: 20px;
+        background-color: rgba(254, 252, 252, 0.6);
+        border-radius: 20px;
+        border: 2px solid hwb(0 7% 93%);
+        box-shadow: 0 0 30px #000;
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } */
+
+    h2 {
+        color: #fff;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    h6 {
+        background-color: #eb5454;
+        color: #fff;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .form {
+        width: 100%;
+    }
+
+    .form .loginGroup {
+        margin-bottom: 10px;
+    }
+
+    .form label {
+        color: #fff;
+        line-height: 2.5;
+        font-weight: 300;
+    }
+
+    .form label input {
+        outline: none;
+        padding: 10px 100px;
+        padding-left: 12px;
+        width: 100%;
+        border: 2px solid #aaa;
+        border-radius: 6px;
+    }
+
+    .form label input:focus {
+        border: 2px solid #72a8f0;
+    }
+
+    .form .btnGroup {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .form .btnGroup .btn {
+        padding: 10px 106px;
+        border-radius: 6px;
+        outline: none;
+        border: none;
+        font-weight: 300;
+        font-size: 12px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .form .btnGroup .btnAccess {
+        background-color: #2bc42b;
+    }
+
+    .form .btnGroup .btnAccess:hover {
+        background-color: #229a22;
+    }
+
+    .form .btnGroup .btnCancel {
+        background-color: #f08282;
+    }
+
+    .form .btnGroup .btnCancel:hover {
+        background-color: #eb5454;
+    }
+</style>
+
+<!DOCTYPE html>
+<div id="login" class="login">
+    <form class="form" action="{{ url_for('login') }}" method="POST">
+        <h2>登入</h2>
+        {% if err %}
+        <h6>Incorrect username or password</h6>
+        {% else %}
+        <!-- <h6>沒有error好棒棒</h6> -->
+        {% endif %}
+        <div class="loginGroup">
+            <label> 帳號
+                <input type="text" name="userid" id="userid" placeholder="請輸入帳號名稱" value="{{default_acct}}">
+            </label>
+        </div>
+        <div class="loginGroup">
+            <label> 密碼
+                <input type="password" name="password" id="password" placeholder="請輸入密碼">
+            </label>
+        </div>
+        <div class="btnGroup">
+            <button class="btn btnAccess">確認</button>
+            <!-- <button class="btn btnCancel">Cancel</button> -->
+        </div>
+    </form>
+</div>
+
+<!-- 初始化 -->
+<script>
+    var mode_css = localStorage.getItem("Mode");
+    if (mode_css == "/static/styles/light_navbar.css") {
+        document.write('<link id="login_form" rel="stylesheet" type="text/css" href="/static/styles/light_login.css">');
+    } else if (mode_css == "/static/styles/night_navbar.css") {
+        document.write('<link id="login_form" rel="stylesheet" type="text/css" href="/static/styles/night_login.css">');
+    }
+</script>
+<!-- 以下兩個要切換 -->
+<!-- <link id="login" rel="stylesheet" type="text/css" href="/static/styles/night_login.css"> -->
+<!-- <link id="login" rel="stylesheet" type="text/css" href="/static/styles/light_login.css"> -->
+{% endblock %}
