@@ -225,6 +225,10 @@ def zh_tw_query_song():
     else:
         return render_template('/zh_tw/query_song.html', form=form, search_active='active')
 
+@app.route('/test-html')
+def test_html():
+    return render_template('signup_success.html')
+
 @app.route('/css-test')
 def css_test():
     return render_template('css_test.html')
@@ -331,7 +335,7 @@ def register():
                     try:
                         cur.execute(sql)
                         conn.commit()
-                        return "Success Thank You" # add new landing page
+                        return render_template('signup_success.html')
                     except Exception as e:
                         conn.rollback()
                         print(e)
