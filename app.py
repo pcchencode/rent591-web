@@ -335,7 +335,7 @@ def register():
                     try:
                         cur.execute(sql)
                         conn.commit()
-                        return "Success Thank You" # add new landing page
+                        return render_template('signup_success.html')
                     except Exception as e:
                         conn.rollback()
                         print(e)
