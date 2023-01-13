@@ -1,0 +1,171 @@
+{% extends '/zh_tw/zh_tw_base.html' %}
+<link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}
+註冊
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+
+{% block content %}
+<div class="signupFrm">
+    <form method="POST" action="{{ url_for('register_tw') }}" class="form">
+        <h1 class="title">註冊</h1>
+        {% with messages = get_flashed_messages() %}
+        <p style="color:red;">{{ messages[0] }}</p>
+        {% endwith %}
+
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            {% set count = form.username.data|length %}
+            {% for field in form.errors %}
+            {% for error in form.errors[field] %}
+            {{ error }}
+            <br>
+            {% endfor %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {{ form.hidden_tag() }}
+        <div class="inputContainer">
+            <!-- <input id="username" name="username" required="" type="text" value="" class="input"> -->
+            <!-- <label for="username" class="label">UserName</label> -->
+            {{ form.username(class_="input") }} {{ form.username.label(class_="label") }}
+        </div>
+
+        <div class="inputContainer">
+            {{ form.email(class_="input") }} {{ form.email.label(class_="label") }}
+        </div>
+
+        <div class="inputContainer">
+            {{ form.password(class_="input") }} {{ form.password.label(class_="label") }}
+        </div>
+
+        <div class="inputContainer">
+            {{ form.password2(class_="input") }} {{ form.password2.label(class_="label") }}
+        </div>
+
+        <p>{{ form.submit(class_="submitBtn") }}</p>
+        <!-- <input type="submit" class="submitBtn" value="Sign up"> -->
+    </form>
+</div>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+/* 去掉所有默认边距/填充，设置字体 */
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: "lato", sans-serif;
+}
+
+/* 将表单水平和垂直放置在中心，将其高度设置为视口高度的 100% */
+.signupFrm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  background-color: white;
+  width: 400px;
+  border-radius: 8px;
+  padding: 20px 40px;
+  box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+}
+
+.title {
+  font-size: 50px;
+  margin-bottom: 50px;
+}
+
+.inputContainer {
+  position: relative;
+  height: 45px;
+  width: 90%;
+  margin-bottom: 17px;
+}
+
+/* 设置输入框的样式 */
+.input {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 50px;
+  width: 100%;
+  border: 1px solid #DADCE0;
+  border-radius: 7px;
+  font-size: 16px;
+  padding: 0 20px;
+  outline: none;
+  background: none;
+  z-index: 1;
+}
+
+/* 隐藏占位符文本（a）*/
+::placeholder {
+  color: transparent;
+}
+
+/* 设置文本标签的样式 */
+.label {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 0 4px;
+  background-color: white;
+  color: #DADCE0;
+  font-size: 16px;
+  transition: 0.5s;
+  z-index: 0;
+}
+
+.submitBtn {
+  display: block;
+  margin-left: auto;
+  padding: 15px 30px;
+  border: none;
+  background-color: green;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.submitBtn:hover {
+  background-color: #99c567;
+  transform: translateY(-2px);
+}
+
+.input:focus + .label {
+  top: -5px;
+  left: 3px;
+  z-index: 10;
+  font-size: 14px;
+  font-weight: 600;
+  color: green;
+}
+
+.input:focus {
+  border: 2px solid green;
+}
+
+.input:not(:placeholder-shown)+ .label {
+  top: -7px;
+  left: 3px;
+  z-index: 10;
+  font-size:16px;
+  font-weight: 600;
+}
+
+</style>
+{% endblock %}
