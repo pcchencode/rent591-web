@@ -11,7 +11,7 @@ from flask import request
 from flask import jsonify
 from flask import render_template
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required, UserMixin
-from view_form import SongForm, zh_tw_SongForm, SearchForm, FormRegister
+from view_form import SongForm, zh_tw_SongForm, SearchForm, FormRegister, zh_tw_FormRegister
 from flask_bcrypt import Bcrypt
 # from form import FormRegister
 from lib.conf import AWS_db_credential
@@ -225,6 +225,10 @@ def zh_tw_query_song():
     else:
         return render_template('/zh_tw/query_song.html', form=form, search_active='active')
 
+@app.route('/test-html')
+def test_html():
+    return render_template('signup_success.html')
+
 @app.route('/css-test')
 def css_test():
     return render_template('css_test.html')
@@ -331,13 +335,43 @@ def register():
                     try:
                         cur.execute(sql)
                         conn.commit()
-                        return "Success Thank You" # add new landing page
+                        return render_template('signup_success.html')
                     except Exception as e:
                         conn.rollback()
                         print(e)
                         return "Opps! something goes wrong"
-
     return render_template('register.html', form=form)
+
+@app.route('/zh_tw/register', methods=['GET', 'POST'])
+def register_tw():
+    form =zh_tw_FormRegister()
+    print(form.validate_on_submit())
+    if form.validate_on_submit():
+        username = request.values.get('username')
+        email = request.values.get('email')
+        pw = request.values.get('password')
+        pw_hash = Bcrypt().generate_password_hash(password=pw).decode('utf8')
+        with db.connect(host=host_name, user=user_name, password=password, port=port, db=db_name) as conn:
+            with conn.cursor() as cur:
+                check_sql = f"""
+                select * from user_account where username = '{username}'
+                """
+                cur.execute(check_sql); row = cur.fetchone()
+                if row:
+                    flash("This account is already registered!!", category='danger')
+                else:
+                    sql = f"""
+                    INSERT INTO user_account(`username`, `email`, `password`) VALUES ('{username}', '{email}', '{pw_hash}')
+                    """ 
+                    try:
+                        cur.execute(sql)
+                        conn.commit()
+                        return render_template('/zh_tw/signup_success.html')
+                    except Exception as e:
+                        conn.rollback()
+                        print(e)
+                        return "Opps! something goes wrong"
+    return render_template('/zh_tw/register.html', form=form)
 
 
 if __name__ == '__main__':

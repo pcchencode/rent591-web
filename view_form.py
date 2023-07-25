@@ -55,3 +55,27 @@ class FormRegister(FlaskForm):
         validators.DataRequired()
     ])
     submit = SubmitField('Register New Account')
+
+class zh_tw_FormRegister(FlaskForm):
+    """依照Model來建置相對應的Form
+    
+    password2: 用來確認兩次的密碼輸入相同
+    """
+    username = StringField('使用者名稱', validators=[
+        validators.DataRequired(),
+        validators.Length(min=5, max=30, message='UserName should be between 5 and 30 charc')
+    ])
+    email = EmailField('電子郵件', validators=[
+        validators.DataRequired(),
+        validators.Length(1, 50),
+        validators.Email()
+    ])
+    password = PasswordField('密碼', validators=[
+        validators.DataRequired(),
+        validators.Length(min=5, message='密碼長度需大於5個字元'),
+        validators.EqualTo('password2', message='密碼輸入錯誤')
+    ])
+    password2 = PasswordField('再次輸入密碼', validators=[
+        validators.DataRequired()
+    ])
+    submit = SubmitField('送出')
